@@ -19,3 +19,4 @@
 /vendor/bundle
 /node_modules
 /.unicorn.sh
+/config/secrets.yml
