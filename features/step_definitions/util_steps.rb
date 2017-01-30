@@ -33,3 +33,7 @@ end
 Then(/^the page should have "([^"]*)"$/) do |css|
   expect(page).to have_css(css)
 end
+
+Then(/^the path should be "([^"]*)"$/) do |path|
+  current_url.match(path)
+end

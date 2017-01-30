@@ -43,8 +43,7 @@ export default class Registration extends Component {
       }
     })
     .done(function(data){
-      console.log(data);
-      // location.reload();
+      window.location = '/';
     }.bind(this));
   }
 
