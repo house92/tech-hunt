@@ -57,3 +57,8 @@ group :test do
   gem 'rails-controller-testing'
   gem 'selenium-webdriver', '< 3.0'
 end
+
+gem 'browserify-rails'
+gem 'react-rails'
+
+gem 'devise'
