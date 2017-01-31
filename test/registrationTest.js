@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderIntoDocument, scryRenderedDOMComponentsWithTag } from 'react-addons-test-utils';
+import { Simulate, renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass } from 'react-addons-test-utils';
 import Registration from '../app/assets/javascripts/components/registration.jsx';
 import { expect } from 'chai';
 
@@ -10,8 +10,8 @@ describe('Registration', () => {
         <Registration />
       );
       const inputs = scryRenderedDOMComponentsWithTag(component, 'input');
-      expect(inputs.length).to.eql(5);
-      expect(inputs[4].getAttribute('name')).to.eql('lastName');
+      expect(inputs.length).to.eql(7);
+      expect(inputs[inputs.length - 1].getAttribute('name')).to.eql('last_name');
     });
   });
 
@@ -21,8 +21,13 @@ describe('Registration', () => {
         <Registration />
       );
       const inputs = scryRenderedDOMComponentsWithTag(component, 'input');
-      expect(inputs.length).to.eql(4);
-      expect(inputs[3].getAttribute('name')).to.eql('companyName');
+      const fields = scryRenderedDOMComponentsWithClass(component, 'field')
+      const employerRadio = fields[fields.length - 1].getElementsByTagName('input')[1];
+      Simulate.click(employerRadio);
+      setTimeout(() => {
+        expect(inputs.length).to.eql(6);
+        expect(inputs[inputs.length - 1].getAttribute('name')).to.eql('companyName');
+      }, 1);
     });
   });
 });
