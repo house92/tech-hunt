@@ -16,10 +16,12 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-/vendor/bundle
-/node_modules
+/vendor/bundle/*
+/node_modules/*
 /.unicorn.sh
 /config/secrets.yml
+
+/coverage/*
 
 # Ignore application configuration
 /config/application.yml

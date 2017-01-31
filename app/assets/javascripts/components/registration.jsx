@@ -69,17 +69,23 @@ export default class Registration extends Component {
     if (this.state.accountType == "hunter") {
       accountFields = (
         <div className="account-fields">
-          <ControlLabel htmlFor="user_first_name">{`First name:`}</ControlLabel>
-          <FormControl type="text" name="first_name" placeholder="First name" value={this.state.firstName} onChange={this._handleInputChange} />
-          <ControlLabel htmlFor="user_last_name">{`Last name:`}</ControlLabel>
-          <FormControl type="text" name="last_name" placeholder="Last name" value={this.state.lastName} onChange={this._handleInputChange} />
+          <div className="field">
+            <ControlLabel htmlFor="user_first_name">{`First name:`}</ControlLabel>
+            <FormControl type="text" name="first_name" placeholder="First name" value={this.state.firstName} onChange={this._handleInputChange} />
+          </div>
+          <div className="field">
+            <ControlLabel htmlFor="user_last_name">{`Last name:`}</ControlLabel>
+            <FormControl type="text" name="last_name" placeholder="Last name" value={this.state.lastName} onChange={this._handleInputChange} />
+          </div>
         </div>
       );
     } else if (this.state.accountType == "employer") {
       accountFields = (
         <div className="account-fields">
-          <ControlLabel htmlFor="user_company_name">{`Company name:`}</ControlLabel>
-          <FormControl type="text" name="company_name" placeholder="Company name" value={this.state.companyName} onChange={this._handleInputChange} />
+          <div className="field">
+            <ControlLabel htmlFor="user_company_name">{`Company name:`}</ControlLabel>
+            <FormControl type="text" name="company_name" placeholder="Company name" value={this.state.companyName} onChange={this._handleInputChange} />
+          </div>
         </div>
       );
     }

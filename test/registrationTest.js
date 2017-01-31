@@ -22,7 +22,7 @@ describe('Registration', () => {
       );
       const inputs = scryRenderedDOMComponentsWithTag(component, 'input');
       const fields = scryRenderedDOMComponentsWithClass(component, 'field')
-      const employerRadio = fields[fields.length - 1].getElementsByTagName('input')[1];
+      const employerRadio = fields[fields.length - 3].getElementsByTagName('input')[1];
       Simulate.click(employerRadio);
       setTimeout(() => {
         expect(inputs.length).to.eql(6);

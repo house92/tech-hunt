@@ -37,3 +37,13 @@ end
 Then(/^the path should be "([^"]*)"$/) do |path|
   current_url.match(path)
 end
+
+Then(/^the value of "([^"]*)" should be "([^"]*)"$/) do |input_name, value|
+  input = find_field(input_name)
+  expect(input.value).to eq(value)
+end
+
+Then(/^the checkbox "([^"]*)" should be checked$/) do |checkbox_name|
+  checkbox = find_field(checkbox_name)
+  expect(checkbox.checked).to be_true
+end

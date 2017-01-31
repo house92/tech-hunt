@@ -45,7 +45,7 @@ export default class LogIn extends Component {
         <div className="field">
           <input name="user[remember_me]" type="hidden" value="0"></input>
           <input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me"></input>
-          <label htmlFor="user_remember_me">Remember me</label>
+          <label htmlFor="user_remember_me">{`Remember me`}</label>
         </div>
       );
     }
@@ -59,27 +59,34 @@ export default class LogIn extends Component {
             <Well bsSize="large">
               <form>
                 <div className="field">
-                  <ControlLabel htmlFor="user_email">E-mail:</ControlLabel>
+                  <ControlLabel htmlFor="user_email">{`E-mail:`}</ControlLabel>
                   <FormControl type="email" name="email"
                   placeholder="E-mail"
                   value={this.state.email}
                   onChange={this._handleInputChange} autoFocus={true} />
                 </div>
                 <div className="field">
-                  <ControlLabel htmlFor="user_password" name="user[password]">Password:</ControlLabel>
+                  <ControlLabel htmlFor="user_password" name="user[password]">{`Password:`}</ControlLabel>
                   <FormControl type="password" name="password"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this._handleInputChange} autoComplete="off" />
                 </div>
+
                 {this.rememberMe()}
-                <Button type="submit" className="btn btn-primary" onClick={this._handleSignInClick}>Log In</Button>
+
+                  <Col xs={12} md={6} mdOffset={3}>
+                    <div className="actions">
+                      <Button type="submit" className="btn btn-primary" onClick={this._handleSignInClick}>{`Log In`}</Button>
+                    </div>
+                    <span>{this.props.deviseLinks}</span>
+                  </Col>
               </form>
 
               <Row>
                 <Col xs={12}>
                   <div className="oAuth">
-                    <a href={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${this.props.clientId}`}>Log on via Github</a>
+                    <a href={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${this.props.clientId}`}>{`Log on via Github`}</a>
                   </div>
                 </Col>
               </Row>
