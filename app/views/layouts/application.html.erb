@@ -14,8 +14,14 @@
   </head>
 
   <body>
-    <span class="notice<%= notice ? nil : " hidden" %>"><%= notice %></span>
-    <span class="alert<%= alert ? nil : " hidden" %>"><%= alert %></span>
+    <div role="alert" class="notice alert alert-warning<%= notice ? nil : " hidden" %>">
+      <span><%= notice %></span>
+    </div>
+    <div role="alert" class="notice alert alert-warning<%= alert ? nil : " hidden" %>">
+      <span><%= alert %></span>
+    </div>
+
+
     <%= yield %>
   </body>
 </html>

@@ -6,13 +6,13 @@ Feature: A user can search for jobs
     Then I should see "Search jobs"
 
     Scenario: Submitting a basic search
-      When I fill in ".search" with "javascript"
+      When I fill in "title" with "javascript"
         And I click on "Go hunting"
       Then the path should be "/jobs/index"
         And I should see "Your search returned"
 
     Scenario: Submitting an advanced search
-      When I fill in "search" with "javascript"
+      When I fill in "title" with "javascript"
         And I click on "Advanced search"
         And I click on "Full-time"
         And I fill in "location" with "London"
@@ -21,7 +21,7 @@ Feature: A user can search for jobs
         And the checkbox "full_time" should be checked
 
       Scenario: Adjusting the filters of an existing search
-        When I fill in ".search" with "javascript"
+        When I fill in "title" with "javascript"
           And I click on "Go hunting"
           And I click on "Part-time"
           And I fill in "location" with "San Francisco"
@@ -31,7 +31,7 @@ Feature: A user can search for jobs
 
       @wip
       Scenario: Adjusting the filters of an existing search with AJAX
-        When I fill in ".search" with "javascript"
+        When I fill in "title" with "javascript"
           And I click on "Go hunting"
           And I click on "Part-time"
           And I fill in "location" with "San Francisco"
