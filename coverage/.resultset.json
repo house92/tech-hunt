@@ -26,7 +26,7 @@
         1,
         null,
         1,
-        0,
+        4,
         null,
         null
       ],
@@ -49,18 +49,6 @@
         null,
         null
       ],
-      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/channels/application_cable/channel.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/channels/application_cable/connection.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
       "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/auth_controller.rb": [
         0,
         0,
@@ -73,10 +61,6 @@
         0,
         0
       ],
-      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
       "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/mailers/application_mailer.rb": [
         0,
         0,
@@ -84,6 +68,6 @@
         0
       ]
     },
-    "timestamp": 1485864432
+    "timestamp": 1485903502
   }
 }

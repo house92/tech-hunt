@@ -1,6 +1,6 @@
 import React from 'react';
 import { Simulate, renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass } from 'react-addons-test-utils';
-import Registration from '../app/assets/javascripts/components/registration.jsx';
+import Registration from '../app/assets/javascripts/components/registration.js';
 import { expect } from 'chai';
 
 describe('Registration', () => {

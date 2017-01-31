@@ -7,9 +7,11 @@
     "test": "test"
   },
   "scripts": {
-    "tests": "mocha --compilers js:babel-core/register --require ./test/test-helper.js 'test/*.@(js|jsx)' -R nyan",
+    "tests": "cd app/assets/javascripts/components && ren '*.jsx' '#1.js' && cd ../../../.. && BABEL_ENV=test mocha --compilers js:babel-core/register --require ./test/test-helper.js 'test/*.@(js|jsx)' -R nyan && cd app/assets/javascripts/components && ren '*.js' '#1.jsx' && cd ../../../..",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "coverage": "node_modules/.bin/babel-node node_modules/.bin/istanbul cover --dir test/coverage _mocha"
+    "coverage": "cd app/assets/javascripts/components && ren '*.jsx' '#1.js' && cd ../../../.. && BABEL_ENV=test node_modules/.bin/babel-node node_modules/.bin/istanbul cover _mocha -- --compilers js:babel-core/register --require ./test/test-helper.js 'test/*.@(js|jsx)' -R nyan && cd app/assets/javascripts/components && ren '*.js' '#1.jsx' && cd ../../../..",
+    "transform-to-js": "cd app/assets/javascripts/components && ren '*.jsx' '#1.js' && cd ../../../..",
+    "transform-to-jsx": "cd app/assets/javascripts/components && ren '*.js' '#1.jsx' && cd ../../../.."
   },
   "author": "",
   "license": "ISC",
@@ -18,12 +20,14 @@
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
+    "babel-plugin-jsx-strip-ext": "^1.0.0",
+    "babel-plugin-transform-import-extension-jsx-to-js": "^0.1.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "babelify": "^7.3.0",
     "chai": "^3.5.0",
     "isparta": "^4.0.0",
-    "istanbul": "^0.4.5",
+    "istanbul": "^1.0.0-alpha.2",
     "jsdom": "^9.9.1",
     "mocha": "^3.2.0",
     "react-addons-test-utils": "^15.4.2",
@@ -31,10 +35,23 @@
     "webpack-dev-server": "^1.16.2"
   },
   "babel": {
-    "presets": [
-      "es2015",
-      "react"
-    ]
+    "env": {
+      "dev": {
+        "presets": [
+          "es2015",
+          "react"
+        ]
+      },
+      "test": {
+        "presets": [
+          "es2015",
+          "react"
+        ],
+        "plugins": [
+          "transform-import-extension-jsx-to-js"
+        ]
+      }
+    }
   },
   "dependencies": {
     "babel-plugin-syntax-async-functions": "^6.13.0",
