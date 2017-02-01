@@ -8,6 +8,7 @@ export default class LogIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      deviseErrorMessages: this.props.deviseErrorMessages,
       email: '',
       password: ''
     }
@@ -28,6 +29,7 @@ export default class LogIn extends Component {
   }
 
   _handleSignInClick(e) {
+    e.preventDefault();
     $.post("/users/sign_in.json", {
       user: {
         email: this.state.email,
@@ -36,7 +38,10 @@ export default class LogIn extends Component {
       authenticity_token: Functions.getMetaContent("csrf-token")
     }, function(data){
       window.location = '/users/dashboard';
-    }.bind(this));
+    })
+    .fail((err) => {
+      this.setState({ deviseErrorMessages: Functions.convertErrors(err) });
+    });
   }
 
   rememberMe() {
@@ -53,7 +58,8 @@ export default class LogIn extends Component {
 
   render() {
     return (
-      <Header currentUser={this.props.currentUser}>
+      <Header currentUser={this.props.currentUser} notice={this.props.notice} alert={this.props.alert}>
+        {this.state.deviseErrorMessages}
         <Row className="top-row-margin">
           <Col xs={12} md={6} mdOffset={3} lg={4} lgOffset={4}>
             <Well bsSize="large">

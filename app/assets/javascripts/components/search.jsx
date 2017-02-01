@@ -20,7 +20,7 @@ export default class Search extends Component {
     });
 
     return (
-      <form>
+      <form action="/jobs" method="GET">
         <div className="basic-search">
           <FormGroup controlId="formControlsTitle">
             <FormControl type="text" name="title" placeholder="Search jobs" />
@@ -44,30 +44,30 @@ export default class Search extends Component {
 
             <FormGroup controlId="formControlsGrading">
               <ControlLabel>{`Grading:`}</ControlLabel>
-              <FormControl componentClass="select">
+              <FormControl componentClass="select" name="grading">
                 {gradingsOptions}
               </FormControl>
             </FormGroup>
 
             <FormGroup controlId="formControlsSalary">
               <ControlLabel>{`From`}</ControlLabel>
-              <FormControl type="number" />
+              <FormControl type="number" min={0} name="min_salary" />
               <ControlLabel>{`to`}</ControlLabel>
-              <FormControl type="number" />
+              <FormControl type="number" min={0} name="max_salary" />
             </FormGroup>
 
             <FormGroup controlId="formControlsTime">
-              <Checkbox inline>{`Full-time`}</Checkbox>
-              <Checkbox inline>{`Part-time`}</Checkbox>
+              <Checkbox name="full_time" inline>{`Full-time`}</Checkbox>
+              <Checkbox name="part_time" inline>{`Part-time`}</Checkbox>
             </FormGroup>
 
             <FormGroup controlId="formControlsDuration">
-              <Checkbox inline>{`Permanent`}</Checkbox>
-              <Checkbox inline>{`Contract`}</Checkbox>
+              <Checkbox name="permanent" inline>{`Permanent`}</Checkbox>
+              <Checkbox name="contract" inline>{`Contract`}</Checkbox>
             </FormGroup>
 
             <FormGroup controlId="formControlsVisa">
-              <Checkbox inline>{`Offers visa`}</Checkbox>
+              <Checkbox name="offers_visa" inline>{`Offers visa`}</Checkbox>
             </FormGroup>
 
           </div>

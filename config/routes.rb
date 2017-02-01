@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/index'
-
-  get 'users/show'
-
-  get 'users/dashboard'
-
   root 'pages#home'
 
   devise_for :users, controllers: {
@@ -20,7 +14,13 @@ Rails.application.routes.draw do
     get 'is_signed_in', to: 'auth#is_signed_in?'
   end
 
-  get '/users/verification' => 'users/registrations#verification', as: 'user_verification'
+  resources :users, only: [:index, :show, :dashboard]
+
+  resources :hunters, only: [:create, :update]
+
+  resources :employers, only: [:create, :update]
+
+  resources :jobs, only: [:index, :show, :new, :create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

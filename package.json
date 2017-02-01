@@ -7,9 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "tests": "cd app/assets/javascripts/components && ren '*.jsx' '#1.js' && cd ../../../.. && BABEL_ENV=test mocha --compilers js:babel-core/register --require ./test/test-helper.js 'test/*.@(js|jsx)' -R nyan && cd app/assets/javascripts/components && ren '*.js' '#1.jsx' && cd ../../../..",
+    "tests": "cd app/assets/javascripts/components && ren '*.jsx' '#1.js' && cd ../../../.. && (BABEL_ENV=test mocha --compilers js:babel-core/register --require ./test/test-helper.js 'test/*.@(js|jsx)' -R nyan || exit 0) && cd app/assets/javascripts/components && ren '*.js' '#1.jsx' && cd ../../../..",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "coverage": "cd app/assets/javascripts/components && ren '*.jsx' '#1.js' && cd ../../../.. && BABEL_ENV=test node_modules/.bin/babel-node node_modules/.bin/istanbul cover _mocha -- --compilers js:babel-core/register --require ./test/test-helper.js 'test/*.@(js|jsx)' -R nyan && cd app/assets/javascripts/components && ren '*.js' '#1.jsx' && cd ../../../..",
+    "coverage": "cd app/assets/javascripts/components && ren '*.jsx' '#1.js' && cd ../../../.. && (BABEL_ENV=test node_modules/.bin/babel-node node_modules/.bin/istanbul cover _mocha -- --compilers js:babel-core/register --require ./test/test-helper.js 'test/*.@(js|jsx)' -R nyan || exit 0) && cd app/assets/javascripts/components && ren '*.js' '#1.jsx' && cd ../../../..",
     "transform-to-js": "cd app/assets/javascripts/components && ren '*.jsx' '#1.js' && cd ../../../..",
     "transform-to-jsx": "cd app/assets/javascripts/components && ren '*.js' '#1.jsx' && cd ../../../.."
   },

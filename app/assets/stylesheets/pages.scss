@@ -2,6 +2,11 @@
 
 html, body {
   overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.alert {
+  position: absolute;
 }
 
 .container-fluid {

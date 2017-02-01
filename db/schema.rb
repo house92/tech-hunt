@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130134828) do
+ActiveRecord::Schema.define(version: 20170201095500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "employers", force: :cascade do |t|
+    t.string   "company_name"
+    t.string   "location"
+    t.text     "bio"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_employers_on_user_id", using: :btree
+  end
+
+  create_table "hunters", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "location"
+    t.text     "bio"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_hunters_on_user_id", using: :btree
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "title"
+    t.string   "location"
+    t.integer  "salary"
+    t.string   "grading"
+    t.string   "description"
+    t.boolean  "full_time"
+    t.boolean  "contract"
+    t.boolean  "offers_visa"
+    t.integer  "employer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["employer_id"], name: "index_jobs_on_employer_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -31,9 +67,13 @@ ActiveRecord::Schema.define(version: 20170130134828) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "account_type"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "employers", "users"
+  add_foreign_key "hunters", "users"
+  add_foreign_key "jobs", "employers"
 end

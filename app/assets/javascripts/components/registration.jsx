@@ -8,13 +8,14 @@ export default class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      deviseErrorMessages: this.props.deviseErrorMessages,
       email: '',
       password: '',
-      passwordConfirmation: '',
-      accountType: 'hunter',
-      firstName: '',
-      lastName: '',
-      companyName: ''
+      password_confirmation: '',
+      account_type: 'hunter',
+      first_name: '',
+      last_name: '',
+      company_name: ''
     };
     this.passwordLengthCheck = this.passwordLengthCheck.bind(this);
     this._handleInputChange = this._handleInputChange.bind(this);
@@ -42,14 +43,50 @@ export default class Registration extends Component {
         user: {
           email: this.state.email,
           password: this.state.password,
-          password_confirmation: this.state.passwordConfirmation
+          password_confirmation: this.state.password_confirmation,
+          account_type: this.state.account_type
         },
         authenticity_token: Functions.getMetaContent("csrf-token")
       }
     })
     .done(function(data){
-      window.location = '/';
-    }.bind(this));
+      if (this.state.account_type == "hunter") {
+        $.post("/hunters",
+          {
+            hunter: {
+              first_name: this.state.first_name,
+              last_name: this.state.last_name,
+              user_id: data.id
+            },
+            authenticity_token: Functions.getMetaContent("csrf-token")
+          },
+          (data) => {
+            window.location = '/';
+          }
+        ).fail((err) => {
+          this.setState({ deviseErrorMessages: Functions.convertErrors(err) });
+        });
+      } else {
+        $.post("/employers",
+          {
+            employer: {
+              company_name: this.state.company_name,
+              user_id: data.id
+            },
+            authenticity_token: Functions.getMetaContent("csrf-token")
+          },
+          (data) => {
+            window.location = '/';
+          }
+        ).fail((err) => {
+          this.setState({ deviseErrorMessages: Functions.convertErrors(err) });
+        });
+      }
+    })
+    .fail((err) => {
+      this.setState({ deviseErrorMessages: Functions.convertErrors(err) });
+    });
+
   }
 
   passwordLengthCheck(e) {
@@ -59,43 +96,41 @@ export default class Registration extends Component {
   }
 
   setAccountType(e) {
-    this.setState({ accountType: e.target.value });
+    this.setState({ account_type: e.target.value });
   }
 
   render() {
-    var deviseErrorMessages = this.props.deviseErrorMessages;
-
     var accountFields;
-    if (this.state.accountType == "hunter") {
+    if (this.state.account_type == "hunter") {
       accountFields = (
         <div className="account-fields">
           <div className="field">
             <ControlLabel htmlFor="user_first_name">{`First name:`}</ControlLabel>
-            <FormControl type="text" name="first_name" placeholder="First name" value={this.state.firstName} onChange={this._handleInputChange} />
+            <FormControl type="text" name="first_name" placeholder="First name" value={this.state.first_name} onChange={this._handleInputChange} />
           </div>
           <div className="field">
             <ControlLabel htmlFor="user_last_name">{`Last name:`}</ControlLabel>
-            <FormControl type="text" name="last_name" placeholder="Last name" value={this.state.lastName} onChange={this._handleInputChange} />
+            <FormControl type="text" name="last_name" placeholder="Last name" value={this.state.last_name} onChange={this._handleInputChange} />
           </div>
         </div>
       );
-    } else if (this.state.accountType == "employer") {
+    } else if (this.state.account_type == "employer") {
       accountFields = (
         <div className="account-fields">
           <div className="field">
             <ControlLabel htmlFor="user_company_name">{`Company name:`}</ControlLabel>
-            <FormControl type="text" name="company_name" placeholder="Company name" value={this.state.companyName} onChange={this._handleInputChange} />
+            <FormControl type="text" name="company_name" placeholder="Company name" value={this.state.company_name} onChange={this._handleInputChange} />
           </div>
         </div>
       );
     }
 
     return (
-      <Header currentUser={this.props.currentUser}>
+      <Header currentUser={this.props.currentUser} notice={this.props.notice} alert={this.props.alert}>
+        {this.state.deviseErrorMessages}
         <Row className="top-row-margin">
           <Col xs={12} md={6} mdOffset={3} lg={4} lgOffset={4}>
             <Well bsSize="large">
-              <span dangerouslySetInnerHTML={{__html: deviseErrorMessages}}></span>
               <form>
                 <div className="field">
                   <ControlLabel htmlFor="user_email">{`E-mail:`}</ControlLabel>
@@ -117,7 +152,7 @@ export default class Registration extends Component {
                   <ControlLabel htmlFor="user_password_confirmation" name="user[password_confirmation]">{`Confirm password:`}</ControlLabel>
                   <FormControl type="password" name="password_confirmation"
                   placeholder="Re-type password"
-                  value={this.state.passwordConfirmation}
+                  value={this.state.password_confirmation}
                   onChange={this._handleInputChange} autoComplete="off" />
                 </div>
 

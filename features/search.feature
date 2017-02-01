@@ -3,9 +3,10 @@ Feature: A user can search for jobs
 
   Background:
     Given I navigate to "/"
-    Then I should see "Search jobs"
 
+    @selenium
     Scenario: Submitting a basic search
+      Then I should see "Search jobs"
       When I fill in "title" with "javascript"
         And I click on "Go hunting"
       Then the path should be "/jobs/index"

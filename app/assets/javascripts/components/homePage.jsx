@@ -18,7 +18,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <Grid fluid>
-        <Header>
+        <Header currentUser={this.props.currentUser} notice={this.props.notice} alert={this.props.alert}>
           <Jumbotron>
             <Image src={this.state.background} />
             <div className="content">
