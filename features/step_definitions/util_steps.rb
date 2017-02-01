@@ -22,6 +22,7 @@ end
 
 Then(/^I should see "([^"]*)"$/) do |text|
   page.has_css?("xycabc")
+  has_content?("syzygy")
   expect(page.body).to match(text)
 end
 

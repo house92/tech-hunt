@@ -36,7 +36,7 @@ export default class LogIn extends Component {
         password: this.state.password
       },
       authenticity_token: Functions.getMetaContent("csrf-token")
-    }, function(data){
+    }, function(user){
       window.location = '/users/dashboard';
     })
     .fail((err) => {

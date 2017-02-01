@@ -4,7 +4,6 @@ When(/^I log in as "([^"]*)" with password "([^"]*)"$/) do |email, password|
 end
 
 Then(/^I should be redirected to the dashboard for "([^"]*)"$/) do |email|
-  binding.pry
-  expect(page.body).to match("Dashboard")
+  expect(current_url).to match("dashboard")
   expect(page.body).to match(email)
 end

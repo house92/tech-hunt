@@ -22,3 +22,4 @@ Feature: A customer can sign up
         And I confirm my e-mail address
       Then I should see "Your email address has been successfully confirmed."
         And the path should be "/users/sign_in"
+        And there should be a corresponding Hunter account

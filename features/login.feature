@@ -7,16 +7,15 @@ Feature: A user can log in
     @poltergeist
     Scenario: Clicking on the <<Log in>> button
       When I navigate to "/"
-      Then I should see "Log in"
-      When I click on "Log in"
+      Then I should see "Sign in"
+      When I click on "Sign in"
       Then I should see "E-mail:"
         And I should see "Password:"
-        And I should see "Log in"
+        And I should see "Sign in"
 
-    @wip
     @selenium
     Scenario: Submitting login details
       When I navigate to "/users/sign_in"
         And I log in as "lightning@asgard.gov" with password "mjollnir"
-        And I click on "Log in"
+        And I click on "Sign in"
       Then I should be redirected to the dashboard for "lightning@asgard.gov"

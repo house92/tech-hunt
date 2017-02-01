@@ -49,21 +49,27 @@ export default class Registration extends Component {
         authenticity_token: Functions.getMetaContent("csrf-token")
       }
     })
-    .done(function(data){
+    .done(function(user){
       if (this.state.account_type == "hunter") {
         $.post("/hunters",
           {
             hunter: {
               first_name: this.state.first_name,
               last_name: this.state.last_name,
-              user_id: data.id
+              user_id: user.id
             },
+            user: user,
             authenticity_token: Functions.getMetaContent("csrf-token")
           },
-          (data) => {
+          (hunter) => {
             window.location = '/';
           }
         ).fail((err) => {
+          $.ajax({
+            url: `users/${user.id}`,
+            method: 'DELETE',
+            authenticity_token: Functions.getMetaContent("csrf-token")
+          });
           this.setState({ deviseErrorMessages: Functions.convertErrors(err) });
         });
       } else {
@@ -71,18 +77,24 @@ export default class Registration extends Component {
           {
             employer: {
               company_name: this.state.company_name,
-              user_id: data.id
+              user_id: user.id
             },
+            user: user,
             authenticity_token: Functions.getMetaContent("csrf-token")
           },
-          (data) => {
+          (employer) => {
             window.location = '/';
           }
         ).fail((err) => {
+          $.ajax({
+            url: `users/${user.id}`,
+            method: 'DELETE',
+            authenticity_token: Functions.getMetaContent("csrf-token")
+          });
           this.setState({ deviseErrorMessages: Functions.convertErrors(err) });
         });
       }
-    })
+    }.bind(this))
     .fail((err) => {
       this.setState({ deviseErrorMessages: Functions.convertErrors(err) });
     });

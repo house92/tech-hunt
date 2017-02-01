@@ -9,6 +9,18 @@
         1,
         null
       ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/helpers/employers_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/helpers/hunters_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/helpers/jobs_helper.rb": [
+        1,
+        null
+      ],
       "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/helpers/pages_helper.rb": [
         1,
         null
@@ -26,7 +38,7 @@
         1,
         null,
         1,
-        0,
+        8,
         null,
         null
       ],
@@ -49,7 +61,76 @@
         null,
         null
       ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/hunters_controller.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/hunter.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/jobs_controller.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/job.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
       "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/auth_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/employers_controller.rb": [
+        0,
         0,
         0,
         0,
@@ -66,8 +147,12 @@
         0,
         0,
         0
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/employer.rb": [
+        0,
+        0
       ]
     },
-    "timestamp": 1485906496
+    "timestamp": 1485983170
   }
 }
