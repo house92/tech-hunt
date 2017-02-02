@@ -1,6 +1,6 @@
 @import 'colours';
 
-html, body {
+body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -12,11 +12,6 @@ html, body {
 .container-fluid {
   padding-left: 0 !important;
   padding-right: 0 !important;
-}
-
-.navbar {
-  margin-bottom: 0 !important;
-  border-radius: 0 !important;
 }
 
 .jumbotron {
@@ -47,6 +42,30 @@ html, body {
       }
       background-color: rgba(51, 51, 51, 0.4);
       padding: 2rem 2.5rem 5rem 2rem;
+      button {
+        background-image: -webkit-linear-gradient(top,map-get($colours, charcoal) 0,map-get($colours, black) 100%);
+        background-image: -o-linear-gradient(top,map-get($colours, charcoal) 0,map-get($colours, black) 100%);
+        background-image: -webkit-gradient(linear,left top,left bottom,from(map-get($colours, charcoal)),to(map-get($colours, black)));
+        background-image: linear-gradient(to bottom,map-get($colours, charcoal) 0,map-get($colours, black) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        background-repeat: repeat-x;
+        color: map-get($colours, electric-blue);
+        text-shadow: none;
+        &:hover {
+          background-color: inherit !important;
+          background-position: 0;
+          text-shadow: 0 0 1rem map-get($colours, white);
+        }
+        &:focus {
+          background-color: inherit !important;
+          background-position: 0;
+        }
+        &:active {
+          color: map-get($colours, white);
+          text-shadow: 0 0 1rem map-get($colours, electric-blue);
+        }
+      }
       .basic-search {
         text-align: right;
         & > .form-group {

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">47.22% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>17/34</span>
+        <span class='fraction'>17/36</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">40% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>1/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">47.22% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>17/34</span>
+        <span class='fraction'>17/36</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -231,7 +231,19 @@
 186
 187
 188
-189</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -294,8 +306,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -305,11 +315,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -470,21 +494,27 @@ export default class Registration extends Component {
         authenticity_token: Functions.getMetaContent("csrf-token")
       }
     })
-    .done(<span class="fstat-no" title="function not covered" >function(</span>data)<span class="cstat-no" title="statement not covered" >{</span>
+    .done(<span class="fstat-no" title="function not covered" >function(</span>user)<span class="cstat-no" title="statement not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >      if (this.state.account_type == "hunter") {</span>
 <span class="cstat-no" title="statement not covered" >        $.post("/hunters",</span>
           {
             hunter: {
               first_name: this.state.first_name,
               last_name: this.state.last_name,
-              user_id: data.id
+              user_id: user.id
             },
+            user: user,
             authenticity_token: Functions.getMetaContent("csrf-token")
           },
-<span class="fstat-no" title="function not covered" >          (</span>data) =&gt; {
+<span class="fstat-no" title="function not covered" >          (</span>hunter) =&gt; {
 <span class="cstat-no" title="statement not covered" >            window.location = '/';</span>
           }
         ).fail(<span class="fstat-no" title="function not covered" >(</span>err) =&gt; {
+<span class="cstat-no" title="statement not covered" >          $.ajax({</span>
+            url: `users/${user.id}`,
+            method: 'DELETE',
+            authenticity_token: Functions.getMetaContent("csrf-token")
+          });
 <span class="cstat-no" title="statement not covered" >          this.setState({ deviseErrorMessages: Functions.convertErrors(err) });</span>
         });
       } else {
@@ -492,18 +522,24 @@ export default class Registration extends Component {
           {
             employer: {
               company_name: this.state.company_name,
-              user_id: data.id
+              user_id: user.id
             },
+            user: user,
             authenticity_token: Functions.getMetaContent("csrf-token")
           },
-<span class="fstat-no" title="function not covered" >          (</span>data) =&gt; {
+<span class="fstat-no" title="function not covered" >          (</span>employer) =&gt; {
 <span class="cstat-no" title="statement not covered" >            window.location = '/';</span>
           }
         ).fail(<span class="fstat-no" title="function not covered" >(</span>err) =&gt; {
+<span class="cstat-no" title="statement not covered" >          $.ajax({</span>
+            url: `users/${user.id}`,
+            method: 'DELETE',
+            authenticity_token: Functions.getMetaContent("csrf-token")
+          });
 <span class="cstat-no" title="statement not covered" >          this.setState({ deviseErrorMessages: Functions.convertErrors(err) });</span>
         });
       }
-    })
+    }.bind(this))
     .fail(<span class="fstat-no" title="function not covered" >(</span>err) =&gt; {
 <span class="cstat-no" title="statement not covered" >      this.setState({ deviseErrorMessages: Functions.convertErrors(err) });</span>
     });
@@ -613,7 +649,7 @@ export default class Registration extends Component {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Feb 01 2017 17:52:10 GMT+0000 (GMT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Feb 02 2017 18:02:58 GMT+0000 (GMT)
 </div>
 </div>
 <script src="prettify.js"></script>

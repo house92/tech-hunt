@@ -9,6 +9,7 @@ describe('Search', () => {
       const component = renderIntoDocument(
         <Search />
       );
+
       const search = scryRenderedDOMComponentsWithTag(component, 'input').filter((input) => {
         return input.getAttribute('name') == 'title';
       });
@@ -16,6 +17,14 @@ describe('Search', () => {
 
       expect(search.length).to.eql(1);
       expect(buttons.length).to.eql(2);
+    });
+
+    it('should not display collapsed options', () => {
+      const component = renderIntoDocument(
+        <Search />
+      );
+
+      expect(component.state.advancedSearchOpen).to.not.be.ok;
     });
   });
 

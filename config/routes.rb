@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     get 'is_signed_in', to: 'auth#is_signed_in?'
   end
 
-  resources :users, only: [:index, :show, :dashboard]
+  resources :users, only: [:index, :show, :dashboard] do
+    get 'dashboard' => 'users#dashboard'
+  end
 
   resources :hunters, only: [:create, :update]
 

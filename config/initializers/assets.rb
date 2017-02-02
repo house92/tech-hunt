@@ -9,3 +9,15 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+
+Dir[Rails.root.join('app/controllers/*_controller.rb')].map do |path|
+  path.match(/(\w+)_controller.rb/)
+  $1
+end.compact.each do |controller|
+  puts controller
+  Rails.application.config.assets.precompile += ["#{controller}.css"]
+end
+
+Rails.application.config.assets.precompile += %w( header.css )
+Rails.application.config.assets.precompile += %w( users/sessions.css )
+Rails.application.config.assets.precompile += %w( users/registrations.css )

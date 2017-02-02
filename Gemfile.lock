@@ -110,6 +110,7 @@ GEM
       activesupport (> 3)
       elasticsearch (> 0.4)
       hashie
+    elasticsearch-rails (0.1.9)
     elasticsearch-transport (5.0.0)
       faraday
       multi_json
@@ -310,6 +311,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   elasticsearch-model
+  elasticsearch-rails
   email_spec
   figaro
   jbuilder (~> 2.5)

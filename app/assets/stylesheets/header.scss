@@ -1,0 +1,12 @@
+@import 'colours';
+
+.navbar {
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  a {
+    color: map-get($colours, electric-blue) !important;
+    &:hover {
+      text-shadow: 0 0 1rem map-get($colours, white) !important;
+    }
+  }
+}

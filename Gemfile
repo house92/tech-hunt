@@ -68,5 +68,6 @@ gem 'react-rails'
 gem 'devise'
 gem 'figaro'
 
+gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
 gem 'will_paginate'

@@ -5,8 +5,16 @@ import Functions from '../../../../lib/functions.js';
 export default class Header extends Component {
   constructor(props) {
     super(props);
+    this.state = { userAccount: null }
     this.handleClick = this.handleClick.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);
+  }
+
+  componentWillMount() {
+    // const component = this;
+    // Functions.getAccount(component.props.currentUser, (account) => {
+    //   component.setState({ userAccount: account });
+    // });
   }
 
   handleClick(e) {
@@ -31,7 +39,13 @@ export default class Header extends Component {
     if (this.props.currentUser) {
       rightMenu = (
         <Nav pullRight>
-          <NavItem eventKey={1} href={`/user/${this.props.currentUser.id}`} onClick={this.handleClick}>{`Profile`}</NavItem>
+          <NavDropdown eventKey={3} title={`Account`} id="basic-nav-dropdown">
+            <MenuItem eventKey={3.1} href={`/users/${this.props.currentUser.id}/dashboard`} onClick={this.handleClick}>{`Dashboard`}</MenuItem>
+            <MenuItem eventKey={3.2} href="#">{`Saved Jobs`}</MenuItem>
+            <MenuItem eventKey={3.3} href="#">{`Applications`}</MenuItem>
+            <MenuItem divider />
+            <MenuItem eventKey={3.9} href="#">{`Settings`}</MenuItem>
+          </NavDropdown>
           <NavItem eventKey={2} href="/users/sign_out" onClick={this.handleSignOut}>{`Sign out`}</NavItem>
         </Nav>
       );
