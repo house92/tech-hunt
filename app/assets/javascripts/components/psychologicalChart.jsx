@@ -25,9 +25,18 @@ export default class PsychologicalChart extends Component {
     //////////////////////// Set-Up //////////////////////////////
     //////////////////////////////////////////////////////////////
 
-    var margin = {top: 80, right: 80, bottom: 80, left: 80},
+    var margin,
+        width,
+        height;
+    if (document.getElementById(`test${this.props.test.id}`)) {
+      margin = {top: 80, right: 80, bottom: 80, left: 80},
       width = Math.max(300, document.getElementById(`test${this.props.test.id}`).parentElement.offsetWidth / 2),
       height = Math.min(width, window.innerHeight * 0.5 - margin.top - margin.bottom - 20);
+    } else {
+      margin = {top: 80, right: 80, bottom: 80, left: 80},
+      width = Math.max(300, 369 / 2),
+      height = Math.min(width, window.innerHeight * 0.5 - margin.top - margin.bottom - 20);
+    }
 
     //////////////////////////////////////////////////////////////
     ////////////////////////// Data //////////////////////////////
@@ -63,9 +72,18 @@ export default class PsychologicalChart extends Component {
   }
 
   myersBriggs(userData) {
-    var margin = {top: 20, right: 30, bottom: 40, left: 30},
-        width = document.getElementById(`test${this.props.test.id}`).parentElement.offsetWidth * 0.635,
-        height = document.getElementById(`test${this.props.test.id}`).parentElement.offsetWidth * 0.4;
+    var margin,
+        width,
+        height;
+    if (document.getElementById(`test${this.props.test.id}`)) {
+      margin = {top: 20, right: 30, bottom: 40, left: 30},
+      width = document.getElementById(`test${this.props.test.id}`).parentElement.offsetWidth * 0.635,
+      height = document.getElementById(`test${this.props.test.id}`).parentElement.offsetWidth * 0.4;
+    } else {
+      margin = {top: 20, right: 30, bottom: 40, left: 30},
+      width = 369 * 0.635,
+      height = 369 * 0.4;
+    }
 
     var x = d3.scaleLinear()
         .range([0, width]);
@@ -136,12 +154,14 @@ export default class PsychologicalChart extends Component {
     d3.selectAll(".bar")
     	.style("filter", "url(#glow)");
 
-    const personalityType = Object.keys(userData).map((key) => { return userData[key].name }).join('');
-    const typeDiv = document.createElement('div');
-    typeDiv.className = "personality-type";
-    typeDiv.innerHTML = personalityType;
-    document.getElementById(`test${this.props.test.id}`).parentElement.appendChild(typeDiv);
-    document.getElementById(`test${this.props.test.id}`).style.marginTop = '6rem';
+    if (document.getElementById(`test${this.props.test.id}`)) {
+      const personalityType = Object.keys(userData).map((key) => { return userData[key].name }).join('');
+      const typeDiv = document.createElement('div');
+      typeDiv.className = "personality-type";
+      typeDiv.innerHTML = personalityType;
+      document.getElementById(`test${this.props.test.id}`).parentElement.appendChild(typeDiv);
+      document.getElementById(`test${this.props.test.id}`).style.marginTop = '6rem';
+    }
 
   }
 
