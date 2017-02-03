@@ -44,11 +44,11 @@ export default class PsychologicalChart extends Component {
 
     var data = [
           [
-          {axis:"Openness",value:userData.openness},
-          {axis:"Conscientiousness",value:userData.conscientiousness},
-          {axis:"Extraversion",value:userData.extraversion},
-          {axis:"Agreeableness",value:userData.agreeableness},
-          {axis:"Emotional stability",value:userData.stability}
+          {axis:"Openness",value:userData.openness / 50},
+          {axis:"Conscientiousness",value:userData.conscientiousness / 50},
+          {axis:"Extraversion",value:userData.extraversion / 50},
+          {axis:"Agreeableness",value:userData.agreeableness / 50},
+          {axis:"Emotional stability",value:userData.stability / 50}
           ]
         ];
     //////////////////////////////////////////////////////////////
@@ -105,7 +105,9 @@ export default class PsychologicalChart extends Component {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var tsvArray = Object.keys(userData).map((key) => { return [userData[key].name, userData[key].value] });
+        console.log(userData, JSON.parse(userData.first));
+
+    var tsvArray = Object.keys(userData).filter((key) => { return key == "first" || key == "second" || key == "third" || key == "fourth" }).map((key) => { return [JSON.parse(userData[key]).name, JSON.parse(userData[key]).value] });
     var tsvData =  [["name", "value"]].concat(tsvArray).map((array) => { return array.join('\t') }).join('\n');
 
     var data = d3.tsvParse(tsvData);
@@ -168,7 +170,7 @@ export default class PsychologicalChart extends Component {
   render() {
     return (
       <div className="chart-container">
-        <h2 className="name">{this.props.test.name}</h2>
+        <h3 className="name">{this.props.test.name}</h3>
         <div id={`test${this.props.test.id}`} className={`chart`}></div>
       </div>
     );

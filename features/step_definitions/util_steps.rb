@@ -20,6 +20,10 @@ When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |css_selector, text|
   fill_in css_selector, with: text
 end
 
+When(/^I select "([^"]*)" from "([^"]*)"$/) do |value, css|
+  select(value, from: css)
+end
+
 Then(/^I should see "([^"]*)"$/) do |text|
   page.has_css?("xycabc")
   has_content?("syzygy")
@@ -47,4 +51,9 @@ end
 Then(/^the checkbox "([^"]*)" should be checked$/) do |checkbox_name|
   checkbox = find_field(checkbox_name)
   expect(checkbox.checked).to be_true
+end
+
+Then(/^I should be redirected to the dashboard for "([^"]*)"$/) do |email|
+  expect(current_url).to match("dashboard")
+  expect(page.body).to match(email)
 end

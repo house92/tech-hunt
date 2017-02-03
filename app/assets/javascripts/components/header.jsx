@@ -82,27 +82,35 @@ export default class Header extends Component {
       }, 3000);
     }
 
+    var footer;
+    if (window.location.pathname == '/') {
+      footer = <Navbar inverse fixedBottom />;
+    } else {
+      footer = <div className="footer"></div>;
+    }
+
     return (
-      <div>
-        <Navbar inverse collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="/">TechHunt</a>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse>
-            {rightMenu}
-          </Navbar.Collapse>
-        </Navbar>
+      <div id="page">
+        <div id="wrap">
+          <Navbar inverse collapseOnSelect>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <a href="/">TechHunt</a>
+              </Navbar.Brand>
+              <Navbar.Toggle />
+            </Navbar.Header>
+            <Navbar.Collapse>
+              {rightMenu}
+            </Navbar.Collapse>
+          </Navbar>
 
-        {notice}
-        {alert}
+          {notice}
+          {alert}
 
-        {this.props.children}
+          {this.props.children}
+        </div>
 
-        <Navbar inverse fixedBottom>
-        </Navbar>
+        {footer}
       </div>
     );
   }

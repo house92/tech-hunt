@@ -9,7 +9,8 @@ module SeedData
 
   def self.extended(object)
     object.instance_exec do
-      User.create(email: "lightning@asgard.gov", password: "mjollnir") unless User.find_by(email: "lightning@asgard.gov")
+      user = User.create(email: "lightning@asgard.gov", password: "mjollnir", account_type: "hunter") unless User.find_by(email: "lightning@asgard.gov")
+      Hunter.create(first_name: "Thor", last_name: "Odinson", user_id: user.id) unless Hunter.find_by(first_name: "Thor")
     end
   end
 

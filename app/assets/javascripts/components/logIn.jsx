@@ -37,7 +37,7 @@ export default class LogIn extends Component {
       },
       authenticity_token: Functions.getMetaContent("csrf-token")
     }, function(user){
-      window.location = '/users/dashboard';
+      window.location = `/users/${user.id}/dashboard`;
     })
     .fail((err) => {
       this.setState({ deviseErrorMessages: Functions.convertErrors(err) });
