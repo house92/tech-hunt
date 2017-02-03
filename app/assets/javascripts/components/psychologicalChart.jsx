@@ -25,9 +25,9 @@ export default class PsychologicalChart extends Component {
     //////////////////////// Set-Up //////////////////////////////
     //////////////////////////////////////////////////////////////
 
-    var margin = {top: 100, right: 100, bottom: 100, left: 100},
-      width = Math.min(700, window.innerWidth * 0.6 - 10) - margin.left - margin.right,
-      height = Math.min(width, window.innerHeight * 0.6 - margin.top - margin.bottom - 20);
+    var margin = {top: 80, right: 80, bottom: 80, left: 80},
+      width = Math.max(300, document.getElementById(`test${this.props.test.id}`).parentElement.offsetWidth / 2),
+      height = Math.min(width, window.innerHeight * 0.5 - margin.top - margin.bottom - 20);
 
     //////////////////////////////////////////////////////////////
     ////////////////////////// Data //////////////////////////////
@@ -64,8 +64,8 @@ export default class PsychologicalChart extends Component {
 
   myersBriggs(userData) {
     var margin = {top: 20, right: 30, bottom: 40, left: 30},
-        width = (960 - margin.left - margin.right) / 2,
-        height = (500 - margin.top - margin.bottom) / 2;
+        width = document.getElementById(`test${this.props.test.id}`).parentElement.offsetWidth * 0.635,
+        height = document.getElementById(`test${this.props.test.id}`).parentElement.offsetWidth * 0.4;
 
     var x = d3.scaleLinear()
         .range([0, width]);
@@ -140,7 +140,8 @@ export default class PsychologicalChart extends Component {
     const typeDiv = document.createElement('div');
     typeDiv.className = "personality-type";
     typeDiv.innerHTML = personalityType;
-    // document.getElementById(`test${this.props.test.id}`).parentElement.appendChild(typeDiv);
+    document.getElementById(`test${this.props.test.id}`).parentElement.appendChild(typeDiv);
+    document.getElementById(`test${this.props.test.id}`).style.marginTop = '6rem';
 
   }
 
