@@ -1,4 +1,4 @@
-.chart {
+.chart-container {
   font-family: 'Open Sans', sans-serif;
   font-size: 11px;
   font-weight: 300;
@@ -6,6 +6,7 @@
   text-align: center;
   text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
   cursor: default;
+  padding: 5rem 5rem;
   .legend {
     font-family: 'Raleway', sans-serif;
     fill: #333333;
@@ -13,5 +14,23 @@
 
   .tooltip {
     fill: #333333;
+  }
+  .bar {
+    height: 5rem !important;
+    opacity: 0.9;
+  }
+  .bar--positive {
+  fill: steelblue;
+  }
+
+  .bar--negative {
+    fill: darkorange;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
   }
 }

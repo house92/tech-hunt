@@ -12,13 +12,38 @@ describe('Psychological Chart', () => {
       extraversion: 0.675,
       agreeableness: 0.625,
       stability: 0.625
-    }
+    },
+    id: 0
+  }
+
+  const myersBriggs = {
+    name: "Myers-Briggs",
+    data: {
+      first: {
+        name: "E",
+        value: -24
+      },
+      second: {
+        name: "N",
+        value: -67
+      },
+      third: {
+        name: "T",
+        value: 5
+      },
+      fourth: {
+        name: "J",
+        value: 31
+      }
+    },
+    id: 1
   }
 
   const hunter1 = {
     first_name: "Wanda",
     last_name: "Maximoff",
     bigFive: bigFive,
+    myersBriggs: myersBriggs,
     id: 0
   }
 
@@ -27,11 +52,11 @@ describe('Psychological Chart', () => {
     hunter: hunter1,
     id: 0
   }
-  describe('render', () => {
+  describe('render Big Five', () => {
     it('should state the name of the test', () => {
       const test = ""
       const component = renderIntoDocument(
-        <PsychologicalChart user={user} test={user.hunter.bigFive.name} data={user.hunter.bigFive.data} />
+        <PsychologicalChart user={user} test={user.hunter.bigFive} data={user.hunter.bigFive.data} />
       );
 
       const name = findRenderedDOMComponentWithClass(component, 'name');
@@ -40,13 +65,36 @@ describe('Psychological Chart', () => {
 
     it('should display an svg chart', () => {
       const component = renderIntoDocument(
-        <PsychologicalChart user={user} test={user.hunter.bigFive.name} data={user.hunter.bigFive.data} />
+        <PsychologicalChart user={user} test={user.hunter.bigFive} data={user.hunter.bigFive.data} />
       );
 
       setTimeout(() => {
         const chart = findRenderedDOMComponentWithTag(component, 'svg');
         expect(chart).to.be.ok;
       }, 1);
+    });
+
+    describe('render Myers-Briggs', () => {
+      it('should state the name of the test', () => {
+        const test = ""
+        const component = renderIntoDocument(
+          <PsychologicalChart user={user} test={user.hunter.myersBriggs} data={user.hunter.myersBriggs.data} />
+        );
+
+        const name = findRenderedDOMComponentWithClass(component, 'name');
+        expect(name.textContent).to.eql(myersBriggs.name);
+      });
+
+      it('should display an svg chart', () => {
+        const component = renderIntoDocument(
+          <PsychologicalChart user={user} test={user.hunter.myersBriggs} data={user.hunter.myersBriggs.data} />
+        );
+
+        setTimeout(() => {
+          const chart = findRenderedDOMComponentWithTag(component, 'svg');
+          expect(chart).to.be.ok;
+        }, 1);
+      });
     });
   });
 });

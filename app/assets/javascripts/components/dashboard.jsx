@@ -14,13 +14,38 @@ export default class Dashboard extends Component {
         extraversion: 0.675,
         agreeableness: 0.625,
         stability: 0.625
-      }
+      },
+      id: 0
+    }
+
+    const myersBriggs = {
+      name: "Myers-Briggs",
+      data: {
+        first: {
+          name: "E",
+          value: -24
+        },
+        second: {
+          name: "N",
+          value: -67
+        },
+        third: {
+          name: "T",
+          value: 5
+        },
+        fourth: {
+          name: "J",
+          value: 31
+        }
+      },
+      id: 1
     }
 
     const hunter1 = {
       first_name: "Wanda",
       last_name: "Maximoff",
       bigFive: bigFive,
+      myersBriggs: myersBriggs,
       id: 0
     }
 
@@ -47,7 +72,12 @@ export default class Dashboard extends Component {
               </Col>
             </Row>
             <Row>
-              <PsychologicalChart user={user} test={user.hunter.bigFive.name} data={user.hunter.bigFive.data} />
+              <Col md={6}>
+                <PsychologicalChart user={user} test={user.hunter.bigFive} data={user.hunter.bigFive.data} />
+              </Col>
+              <Col md={6}>
+                <PsychologicalChart user={user} test={user.hunter.myersBriggs} data={user.hunter.myersBriggs.data} />
+              </Col>
             </Row>
           </Col>
         </Row>
