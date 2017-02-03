@@ -15,5 +15,7 @@ class UsersController < ApplicationController
   def dashboard
     account = current_user.get_account
     @applications = account.applications
+    @big_five = account.big_five ? account.big_five : nil
+    @myers_briggs = account.myers_briggs ? account.myers_briggs : nil
   end
 end

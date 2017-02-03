@@ -1,5 +1,20 @@
 @import 'colours';
 
+html, body {
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  & > div {
+    height: 100%;
+  }
+}
+
+#page {
+  height: 100%;
+}
+
 .navbar {
   margin-bottom: 0 !important;
   border-radius: 0 !important;
@@ -9,4 +24,24 @@
       text-shadow: 0 0 1rem map-get($colours, white) !important;
     }
   }
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -4rem;
+  padding: 0 0 10rem;
+}
+
+.footer {
+  background-image: -webkit-linear-gradient(top,map-get($colours, charcoal) 0,map-get($colours, black) 100%);
+  background-image: -o-linear-gradient(top,map-get($colours, charcoal) 0,map-get($colours, black) 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,from(map-get($colours, charcoal)),to(map-get($colours, black)));
+  background-image: linear-gradient(to bottom,map-get($colours, charcoal) 0,map-get($colours, black) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  background-repeat: repeat-x;
+  color: map-get($colours, electric-blue);
+  text-shadow: none;
+  padding: 2rem 5rem;
 }

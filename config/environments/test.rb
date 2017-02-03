@@ -57,6 +57,7 @@ def log_on_as(user)
       warden_scope = Devise.warden_config[:default_scope].to_s
       warden_class = warden_scope.camelize.constantize
       user = warden_class.find_by(email: user) if user.is_a?(String)
+      user.update(confirmed_at: DateTime.now)
       page.set_rack_session("warden.user.#{warden_scope}.key" => warden_class.serialize_into_session(user))
   elsif user.is_a? ActiveRecord::Base
       page.set_rack_session("#{user.class.underscore}_id".to_sym => user.id)

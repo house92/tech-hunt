@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :dashboard] do
     get 'dashboard' => 'users#dashboard'
+    get 'tests' => 'tests#show'
+    post 'tests/big_five' => 'tests#big_five'
+    post 'tests/myers_briggs' => 'tests#myers_briggs'
   end
 
   resources :hunters, only: [:create, :update]
