@@ -1,4 +1,5 @@
 class HuntersController < ApplicationController
+  before_filter :authenticate_user!, only: [:edit, :update, :destroy]
 
   def create
     Hunter.create(hunter_params)

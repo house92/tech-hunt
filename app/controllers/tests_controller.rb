@@ -1,6 +1,8 @@
 require 'json'
 
 class TestsController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
     user = User.find_by(id: params[:user_id])
     redirect_to(user_dashboard_path(user)) unless user.account_type == "hunter"

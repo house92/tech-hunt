@@ -1,12 +1,13 @@
 require 'will_paginate'
 
 class JobsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @jobs = Job.search({
       query: {
           bool: {
-            must: {
+            must: [
               match: {
                 description: {
                   query: params[:title],
@@ -15,10 +16,10 @@ class JobsController < ApplicationController
               },
               match: {
                 location: {
-                  query: params[:location] 
+                  query: params[:location]
                 }
               }
-            },
+            ],
             should: [
               { match: { title: params[:title] }}
               # { match: { salary: params[:salary] }},
@@ -45,12 +46,13 @@ class JobsController < ApplicationController
   end
 
   def create
-    Job.create(job_params)
+    account = current_user.get_account
+    Job.create(job_params, employer_id: account.id)
     Job.__elasticsearch__.index_document
   end
 
   private
   def job_params
-    params.require(:job).permit(:title, :location, :salary, :grading, :description, :full_time, :contract, :offers_visa, :employer_id)
+    params.require(:job).permit(:title, :location, :salary, :grading, :description, :full_time, :contract, :offers_visa, :user_id)
   end
 end

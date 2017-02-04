@@ -1,4 +1,5 @@
 class EmployersController < ApplicationController
+  before_filter :authenticate_user!, only: [:edit, :update, :destroy]
 
   def create
     Employer.create(employer_params)

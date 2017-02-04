@@ -19,22 +19,22 @@ describe('Psychological Chart', () => {
   const myersBriggs = {
     name: "Myers-Briggs",
     data: {
-      first: {
+      first: JSON.stringify({
         name: "E",
         value: -24
-      },
-      second: {
+      }),
+      second: JSON.stringify({
         name: "N",
         value: -67
-      },
-      third: {
+      }),
+      third: JSON.stringify({
         name: "T",
         value: 5
-      },
-      fourth: {
+      }),
+      fourth: JSON.stringify({
         name: "J",
         value: 31
-      }
+      })
     },
     id: 1
   }

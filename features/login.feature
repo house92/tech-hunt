@@ -13,9 +13,9 @@ Feature: A user can log in
         And I should see "Password:"
         And I should see "Sign in"
 
-    @selenium
+    @poltergeist
     Scenario: Submitting login details
       When I navigate to "/users/sign_in"
         And I log in as "lightning@asgard.gov" with password "mjollnir"
-        And I click on "Sign in"
+        And I click on the "Sign in" button
       Then I should be redirected to the dashboard for "lightning@asgard.gov"

@@ -83,7 +83,7 @@ export default class LogIn extends Component {
 
                   <Col xs={12} md={6} mdOffset={3}>
                     <div className="actions">
-                      <Button type="submit" className="btn btn-primary" onClick={this._handleSignInClick}>{`Log In`}</Button>
+                      <Button type="submit" className="btn btn-primary" onClick={this._handleSignInClick}>{`Sign in`}</Button>
                     </div>
                     <span>{this.props.deviseLinks}</span>
                   </Col>

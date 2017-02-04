@@ -22,7 +22,7 @@ export default class Dashboard extends Component {
         </Col>
       }
       personalityCharts = (
-        <Row>
+        <div>
           <Row>
             <Col xs={12}>
               <h2>{`Personality profile`}</h2>
@@ -33,7 +33,7 @@ export default class Dashboard extends Component {
             {bigFive}
             {myersBriggs}
           </Row>
-        </Row>
+        </div>
       );
     }
 

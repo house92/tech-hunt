@@ -16,6 +16,16 @@ When(/^I click on "([^"]*)"$/) do |text|
   click_on text
 end
 
+When(/^I click on the "([^"]*)" button$/) do |text|
+  has_content?("syzygy")
+  click_button text
+end
+
+When(/^I choose "([^"]*)"$/) do |selector|
+  has_content?("syzygy")
+  find(:css, selector).set(true)
+end
+
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |css_selector, text|
   fill_in css_selector, with: text
 end
@@ -54,6 +64,12 @@ Then(/^the checkbox "([^"]*)" should be checked$/) do |checkbox_name|
 end
 
 Then(/^I should be redirected to the dashboard for "([^"]*)"$/) do |email|
+  has_content?("syzygy")
   expect(current_url).to match("dashboard")
-  expect(page.body).to match(email)
+  expect(page.body).to match("Applications")
+end
+
+Then(/^there should be a form on the page$/) do
+  form = page.find('form')
+  expect(form).to be_truthy
 end

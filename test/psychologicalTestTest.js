@@ -4,10 +4,14 @@ import PsychologicalTest from '../app/assets/javascripts/components/psychologica
 import { expect } from 'chai';
 
 describe('Psychological Test', () => {
+  const user = {
+    id: 0
+  }
+
   describe('render', () => {
     it('should present a dropdown to select test', () => {
       const component = renderIntoDocument(
-        <PsychologicalTest />
+        <PsychologicalTest currentUser={user} />
       );
 
       const dropdown = findRenderedDOMComponentWithTag(component, 'select');
@@ -16,16 +20,17 @@ describe('Psychological Test', () => {
 
     it('should present a submit button', () => {
       const component = renderIntoDocument(
-        <PsychologicalTest />
+        <PsychologicalTest currentUser={user} />
       );
 
-      const button = findRenderedDOMComponentWithTag(component, 'button');
+      const form = findRenderedDOMComponentWithTag(component, 'form');
+      const button = form.getElementsByTagName('button')[0];
       expect(button).to.be.ok;
     });
 
     it('should default to the Big Five', () => {
       const component = renderIntoDocument(
-        <PsychologicalTest />
+        <PsychologicalTest currentUser={user} />
       );
 
       const testName = findRenderedDOMComponentWithClass(component, 'name');
@@ -38,7 +43,7 @@ describe('Psychological Test', () => {
   describe('selecting a test', () => {
     it('should change the form', () => {
       const component = renderIntoDocument(
-        <PsychologicalTest />
+        <PsychologicalTest currentUser={user} />
       );
 
       const dropdown = findRenderedDOMComponentWithTag(component, 'select');
