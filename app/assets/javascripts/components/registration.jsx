@@ -23,12 +23,12 @@ export default class Registration extends Component {
     this.setAccountType = this.setAccountType.bind(this);
   }
 
-  _handleInputChange(ev) {
+  _handleInputChange(e) {
     // Get a deep clone of the component's state before the input change.
     var nextState = _.cloneDeep(this.state);
 
     //Update the state of the component
-    nextState[ev.target.name] = ev.target.value;
+    nextState[e.target.name] = e.target.value;
 
     // Update the component's state with the new state
     this.setState(nextState);

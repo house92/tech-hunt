@@ -14,7 +14,7 @@ Feature: An employer can post job ads
         And there should be a form on the page
 
     @poltergeist
-    Scenario: Submitting a new job
+    Scenario: Submitting a new job (without skills or benefits)
       When I click on "Post a job"
         And I fill out the form for a new job
         And I click on "Submit"

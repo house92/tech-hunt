@@ -4,3 +4,4 @@ global.LogIn = require('components/logIn.jsx').default;
 global.ResultsContainer = require('components/resultsContainer.jsx').default;
 global.Dashboard = require('components/dashboard.jsx').default;
 global.PsychologicalTest = require('components/psychologicalTest.jsx').default;
+global.PostJob = require('components/postJob.jsx').default;

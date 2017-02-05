@@ -105,8 +105,6 @@ export default class PsychologicalChart extends Component {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        console.log(userData, JSON.parse(userData.first));
-
     var tsvArray = Object.keys(userData).filter((key) => { return key == "first" || key == "second" || key == "third" || key == "fourth" }).map((key) => { return [JSON.parse(userData[key]).name, JSON.parse(userData[key]).value] });
     var tsvData =  [["name", "value"]].concat(tsvArray).map((array) => { return array.join('\t') }).join('\n');
 

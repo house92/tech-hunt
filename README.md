@@ -1,24 +1,11 @@
-# README
+TechHunt - Final Project
+----------------------------------------------
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built with Rails 5 and ReactJS
+Database: PostgreSQL
 
-Things you may want to cover:
+Testing: Cucumber, Mocha & Chai
 
-* Ruby version
+APIs: Elasticsearch, Google Maps, Github OAuth
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Data visualisation: D3

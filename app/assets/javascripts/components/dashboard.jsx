@@ -37,6 +37,13 @@ export default class Dashboard extends Component {
       );
     }
 
+    var postedJobs;
+    if (this.props.currentUser.account_type == "employer") {
+      postedJobs = (
+        <a href="/jobs/new">{`Post a job`}</a>
+      );
+    }
+
     return (
       <Header currentUser={this.props.currentUser} notice={this.props.notice} alert={this.props.alert}>
         <Row>
@@ -50,7 +57,7 @@ export default class Dashboard extends Component {
                 <ApplicationsContainer currentUser={this.props.currentUser} applications={this.props.applications} />
               </Col>
               <Col md={6}>
-
+                {postedJobs}
               </Col>
             </Row>
             {personalityCharts}

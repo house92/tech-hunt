@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203201220) do
+ActiveRecord::Schema.define(version: 20170205231041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20170203201220) do
     t.datetime "updated_at",                 null: false
     t.index ["hunter_id"], name: "index_applications_on_hunter_id", using: :btree
     t.index ["job_id"], name: "index_applications_on_job_id", using: :btree
+  end
+
+  create_table "benefits", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "big_fives", force: :cascade do |t|
@@ -50,6 +56,16 @@ ActiveRecord::Schema.define(version: 20170203201220) do
     t.index ["user_id"], name: "index_employers_on_user_id", using: :btree
   end
 
+  create_table "hunter_skills", force: :cascade do |t|
+    t.string   "competence"
+    t.integer  "hunter_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hunter_id"], name: "index_hunter_skills_on_hunter_id", using: :btree
+    t.index ["skill_id"], name: "index_hunter_skills_on_skill_id", using: :btree
+  end
+
   create_table "hunters", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -59,6 +75,33 @@ ActiveRecord::Schema.define(version: 20170203201220) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hunters_on_user_id", using: :btree
+  end
+
+  create_table "industry_skills", force: :cascade do |t|
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_industry_skills_on_skill_id", using: :btree
+  end
+
+  create_table "job_benefits", force: :cascade do |t|
+    t.integer  "value"
+    t.integer  "job_id"
+    t.integer  "benefit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["benefit_id"], name: "index_job_benefits_on_benefit_id", using: :btree
+    t.index ["job_id"], name: "index_job_benefits_on_job_id", using: :btree
+  end
+
+  create_table "job_skills", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "competence"
+    t.index ["job_id"], name: "index_job_skills_on_job_id", using: :btree
+    t.index ["skill_id"], name: "index_job_skills_on_skill_id", using: :btree
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -73,6 +116,8 @@ ActiveRecord::Schema.define(version: 20170203201220) do
     t.integer  "employer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.float    "lat"
+    t.float    "lng"
     t.index ["employer_id"], name: "index_jobs_on_employer_id", using: :btree
   end
 
@@ -86,6 +131,12 @@ ActiveRecord::Schema.define(version: 20170203201220) do
     t.datetime "updated_at",                          null: false
     t.string   "name",       default: "Myers-Briggs"
     t.index ["hunter_id"], name: "index_myers_briggs_on_hunter_id", using: :btree
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,7 +165,14 @@ ActiveRecord::Schema.define(version: 20170203201220) do
   add_foreign_key "applications", "jobs"
   add_foreign_key "big_fives", "hunters"
   add_foreign_key "employers", "users"
+  add_foreign_key "hunter_skills", "hunters"
+  add_foreign_key "hunter_skills", "skills"
   add_foreign_key "hunters", "users"
+  add_foreign_key "industry_skills", "skills"
+  add_foreign_key "job_benefits", "benefits"
+  add_foreign_key "job_benefits", "jobs"
+  add_foreign_key "job_skills", "jobs"
+  add_foreign_key "job_skills", "skills"
   add_foreign_key "jobs", "employers"
   add_foreign_key "myers_briggs", "hunters"
 end

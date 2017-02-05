@@ -47,12 +47,22 @@ class JobsController < ApplicationController
 
   def create
     account = current_user.get_account
-    Job.create(job_params, employer_id: account.id)
-    Job.__elasticsearch__.index_document
+    job = Job.new(job_params)
+    job.update(employer_id: account.id)
+    job.save
+    job.__elasticsearch__.index_document
   end
 
   private
   def job_params
-    params.require(:job).permit(:title, :location, :salary, :grading, :description, :full_time, :contract, :offers_visa, :user_id)
+    params.permit(:title, :location, :lat, :lng, :salary, :grading, :description, :full_time, :contract, :offers_visa)
+  end
+
+  def skills_params
+    params.require(:skills).permit(:name)
+  end
+
+  def benefits_params
+    params.require(:benefits).permit(:name)
   end
 end
