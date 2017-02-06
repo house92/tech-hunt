@@ -64,11 +64,11 @@ class JobsController < ApplicationController
     params.permit(:title, :location, :lat, :lng, :min_salary, :max_salary, :grading, :description, :full_time, :part_time, :permanent, :contract, :offers_visa)
   end
 
-  def skills_params
-    params.require(:skills).permit(:name)
-  end
-
-  def benefits_params
-    params.require(:benefits).permit(:name)
-  end
+  # def skills_params
+  #   params.require(:skills).permit(:name)
+  # end
+  #
+  # def benefits_params
+  #   params.require(:benefits).permit(:name)
+  # end
 end

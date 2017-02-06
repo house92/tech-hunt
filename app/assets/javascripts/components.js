@@ -7,3 +7,4 @@ global.PsychologicalTest = require('components/psychologicalTest.jsx').default;
 global.PostJob = require('components/postJob.jsx').default;
 global.JobShow = require('components/jobShow.jsx').default;
 global.ApplicationForm = require('components/applicationForm.jsx').default;
+global.ApplicationShow = require('components/applicationShow.jsx').default;

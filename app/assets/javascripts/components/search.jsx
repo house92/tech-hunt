@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputGroup, ControlLabel, FormGroup, FormControl, Checkbox, Button, Collapse } from 'react-bootstrap';
+import { Row, Col, InputGroup, ControlLabel, FormGroup, FormControl, Checkbox, Button, Collapse } from 'react-bootstrap';
 import _ from 'lodash';
 
 const gradings = ["Junior", "Mid-level", "Senior"];
@@ -52,7 +52,7 @@ export default class Search extends Component {
             <FormControl type="text" name="title" placeholder="Search jobs" />
           </FormGroup>
 
-          <span>{` in `}</span>
+          <span>{window.innerWidth >= 500 ? ` in ` : ``}</span>
 
           <FormGroup controlId="formControlsLocation">
             <InputGroup>
@@ -83,17 +83,29 @@ export default class Search extends Component {
             </FormGroup>
 
             <FormGroup controlId="formControlsTime">
-              <Checkbox checked={this.state.full_time} data-name="full_time" onClick={this.handlePositiveCheck} inline>{`Full-time`}</Checkbox>
-              <FormControl type="hidden" name="full_time" value={this.state.full_time} />
-              <Checkbox checked={!this.state.part_time} data-name="part_time" onClick={this.handleNegativeCheck} inline>{`Part-time`}</Checkbox>
-              <FormControl type="hidden" name="part_time" value={this.state.part_time} />
+              <Row>
+                <Col xs={6} md={3}>
+                  <Checkbox checked={this.state.full_time} data-name="full_time" onClick={this.handlePositiveCheck} inline>{`Full-time`}</Checkbox>
+                  <FormControl type="hidden" name="full_time" value={this.state.full_time} />
+                </Col>
+                <Col xs={6} md={3}>
+                  <Checkbox checked={!this.state.part_time} data-name="part_time" onClick={this.handleNegativeCheck} inline>{`Part-time`}</Checkbox>
+                  <FormControl type="hidden" name="part_time" value={this.state.part_time} />
+                </Col>
+              </Row>
             </FormGroup>
 
             <FormGroup controlId="formControlsDuration">
-              <Checkbox checked={!this.state.permanent} data-name="permanent" onClick={this.handleNegativeCheck} inline>{`Permanent`}</Checkbox>
-              <FormControl type="hidden" name="permanent" value={this.state.permanent} />
-              <Checkbox checked={this.state.contract} data-name="contract" onClick={this.handlePositiveCheck} inline>{`Contract`}</Checkbox>
-              <FormControl type="hidden" name="contract" value={this.state.contract} />
+              <Row>
+                <Col xs={6} md={3}>
+                  <Checkbox checked={!this.state.permanent} data-name="permanent" onClick={this.handleNegativeCheck} inline>{`Permanent`}</Checkbox>
+                  <FormControl type="hidden" name="permanent" value={this.state.permanent} />
+                </Col>
+                <Col xs={6} md={3}>
+                  <Checkbox checked={this.state.contract} data-name="contract" onClick={this.handlePositiveCheck} inline>{`Contract`}</Checkbox>
+                  <FormControl type="hidden" name="contract" value={this.state.contract} />
+                </Col>
+              </Row>
             </FormGroup>
 
             <FormGroup controlId="formControlsVisa">

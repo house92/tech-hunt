@@ -4,6 +4,8 @@ class ApplicationsController < ApplicationController
 
   def show
     @application = Application.find_by(id: params[:id])
+    @hunter = @application.hunter
+    @job = @application.job
   end
 
   def new
@@ -35,7 +37,11 @@ class ApplicationsController < ApplicationController
 
   def verify_hunter
     if current_user.account_type != "hunter"
-      redirect_to :back
+      begin
+        redirect_to :back
+      rescue ActionController::RedirectBackError
+        redirect_to root_path
+      end
     end
   end
 end

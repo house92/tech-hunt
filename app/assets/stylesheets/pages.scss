@@ -2,7 +2,9 @@
 
 body {
   overflow-x: hidden;
-  overflow-y: hidden;
+  @media (min-width: 495px) {
+    overflow-y: hidden;
+  }
 }
 
 .alert {
@@ -33,7 +35,12 @@ body {
       text-shadow: 0 0 2rem map-get($colours, electric-blue);
     }
     form {
-      margin: 10rem 0;
+      @media (min-width: 495px) {
+        margin: 6rem 0;
+      }
+      @media (max-width: 494px) {
+        margin: 4rem 0 6rem;
+      }
       border: {
         width: 3px;
         style: solid;
@@ -71,18 +78,40 @@ body {
         & > .form-group {
           display: inline-table;
           vertical-align: middle;
-          width: 48%;
+          @media (min-width: 777px) {
+            width: 48%;
+          }
+          @media (max-width: 776px) {
+            width: 100%;
+          }
         }
         & > span {
-          width: 3.8%;
+          @media (min-width: 777px) {
+            width: 3.8%;
+          }
         }
       }
       .advanced-search {
         clear: both;
+        padding-top: 1rem;
+        margin-bottom: -4rem;
         .form-group {
-          & > * {
-            display: inline-block;
-            max-width: 20%;
+          @media (min-width: 495px) {
+            &:first-child > *,
+            &:nth-child(2) > * {
+              display: inline-block;
+              max-width: 20%;
+            }
+          }
+          @media (max-width: 494px) {
+            &:first-child > * {
+              display: inline-block;
+              max-width: 45%;
+            }
+            &:nth-child(2) > * {
+              display: inline-block;
+              max-width: 30%;
+            }
           }
         }
         input[type=text], input[type=number], select {

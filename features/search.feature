@@ -4,7 +4,7 @@ Feature: A user can search for jobs
   Background:
     Given I navigate to "/"
 
-    @selenium
+    @poltergeist
     Scenario: Submitting a basic search
       Then I should see "Search jobs"
       When I fill in "title" with "javascript"

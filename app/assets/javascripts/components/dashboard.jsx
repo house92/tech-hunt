@@ -4,8 +4,6 @@ import Header from './header.jsx';
 import ApplicationsContainer from './applicationsContainer.jsx';
 import PsychologicalChart from './psychologicalChart.jsx';
 
-var applications;
-
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -19,14 +17,11 @@ export default class Dashboard extends Component {
       currentUser.employer = this.props.account;
     }
 
-    applications = this.props.applications.map((application) => {
+    this.props.applications.forEach((application) => {
       $.get('/applications/accounts.json', { application_id: application.id }, (data) => {
-        console.log(data);
         application.hunter = data.hunter;
         application.job = data.job;
-        this.setState({ applications: this.state.applications.concat([application]) }, () => {
-          console.log(this.state.applications);
-        });
+        this.setState({ applications: this.state.applications.concat([application]) });
       });
     });
   }
