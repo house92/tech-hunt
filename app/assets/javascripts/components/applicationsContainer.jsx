@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ApplicationShow from './applicationShow.jsx';
+import Functions from '../../../../lib/functions.js';
 
 export default class ApplicationsContainer extends Component {
   render() {
@@ -15,7 +16,7 @@ export default class ApplicationsContainer extends Component {
                 <div className="name">{name}</div>
               </Col>
               <Col md={2}>
-                {application.created_at.toString()}
+                {Functions.formatDate(Date.parse(application.created_at, false))}
               </Col>
             </Row>
           </a>
@@ -24,7 +25,7 @@ export default class ApplicationsContainer extends Component {
     });
     return (
       <div className="applications">
-        <h2>Applications</h2>
+        <h2>{`Applications`}</h2>
         {applications}
       </div>
     );

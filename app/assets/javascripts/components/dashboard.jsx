@@ -4,7 +4,33 @@ import Header from './header.jsx';
 import ApplicationsContainer from './applicationsContainer.jsx';
 import PsychologicalChart from './psychologicalChart.jsx';
 
+var applications;
+
 export default class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { applications: [] }
+  }
+  componentWillMount() {
+    const currentUser = this.props.currentUser;
+    if (currentUser.account_type == "hunter") {
+      currentUser.hunter = this.props.account;
+    } else {
+      currentUser.employer = this.props.account;
+    }
+
+    applications = this.props.applications.map((application) => {
+      $.get('/applications/accounts.json', { application_id: application.id }, (data) => {
+        console.log(data);
+        application.hunter = data.hunter;
+        application.job = data.job;
+        this.setState({ applications: this.state.applications.concat([application]) }, () => {
+          console.log(this.state.applications);
+        });
+      });
+    });
+  }
+
   render() {
     var bigFive;
     var myersBriggs;
@@ -54,7 +80,7 @@ export default class Dashboard extends Component {
             <h1>{`Dashboard`}</h1>
             <Row>
               <Col md={6}>
-                <ApplicationsContainer currentUser={this.props.currentUser} applications={this.props.applications} />
+                <ApplicationsContainer currentUser={this.props.currentUser} applications={this.state.applications}  />
               </Col>
               <Col md={6}>
                 {postedJobs}

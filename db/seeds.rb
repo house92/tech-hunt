@@ -12,7 +12,9 @@ module SeedData
       user1 = User.create(email: "lightning@asgard.gov", password: "mjollnir", account_type: "hunter") unless User.find_by(email: "lightning@asgard.gov")
       Hunter.create(first_name: "Thor", last_name: "Odinson", user_id: user1.id) unless Hunter.find_by(first_name: "Thor")
       user2 = User.create(email: "charles.xavier@xschool.com", password: "cerebro", account_type: "employer") unless User.find_by(email: "xavier@xschool.com")
-      Employer.create(company_name: "Professor Xavier's School For Gifted Youngsters", user_id: user2.id) unless Employer.find_by(company_name: "Professor Xavier's School For Gifted Youngsters")
+      employer1 = Employer.create(company_name: "Professor Xavier's School For Gifted Youngsters", user_id: user2.id) unless Employer.find_by(company_name: "Professor Xavier's School For Gifted Youngsters")
+
+      job1 = Job.create(title: "Tech Wizard", description: "A highly skilled web developer for part-time role. Must be mutant-friendly.", salary: 42000, location: "New York, USA", lat: 40.7141667, lng: -74.0063889, grading: "Senior", full_time: false, contract: false, offers_visa: false, employer_id: employer1.id)
     end
   end
 

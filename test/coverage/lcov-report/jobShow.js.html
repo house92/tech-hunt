@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for dashboard.js</title>
+    <title>Code coverage report for jobShow.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -16,18 +16,18 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="index.html">All files</a> dashboard.js
+      <a href="index.html">All files</a> jobShow.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.71% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/14</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/8</span>
+        <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.71% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/14</span>
+        <span class='fraction'>4/4</span>
       </div>
     </div>
   </div>
@@ -87,55 +87,13 @@
 42
 43
 44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+45</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,14 +109,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -182,70 +132,45 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import Header from './header.jsx';
-import ApplicationsContainer from './applicationsContainer.jsx';
-import PsychologicalChart from './psychologicalChart.jsx';
 &nbsp;
-export default class Dashboard extends Component {
+export default class JobShow extends Component {
   render() {
-    var bigFive;
-    var myersBriggs;
-    var personalityCharts;
-&nbsp;
-    if (this.props.currentUser.account_type == "hunter") {
-      <span class="missing-if-branch" title="if path not taken" >I</span>if (this.props.bigFive) {
-<span class="cstat-no" title="statement not covered" >        bigFive = &lt;Col md={6}&gt;</span>
-          &lt;PsychologicalChart user={this.props.currentUser} test={this.props.bigFive} data={this.props.bigFive} /&gt;
-        &lt;/Col&gt;
-      }
-      <span class="missing-if-branch" title="if path not taken" >I</span>if (this.props.myersBriggs) {
-<span class="cstat-no" title="statement not covered" >        myersBriggs = &lt;Col md={6}&gt;</span>
-          &lt;PsychologicalChart user={this.props.currentUser} test={this.props.myersBriggs} data={this.props.myersBriggs} /&gt;
-        &lt;/Col&gt;
-      }
-      personalityCharts = (
-        &lt;div&gt;
+    return (
+      &lt;Header currentUser={this.props.currentUser} notice={this.props.notice} alert={this.props.alert}&gt;
+        &lt;div className="job"&gt;
           &lt;Row&gt;
             &lt;Col xs={12}&gt;
-              &lt;h2&gt;{`Personality profile`}&lt;/h2&gt;
-              &lt;a href={`/users/${this.props.currentUser.id}/tests`}&gt;{`Take tests`}&lt;/a&gt;
+              &lt;h1 className="title"&gt;{this.props.job.title}&lt;/h1&gt;
+              &lt;a href={`/employers/${this.props.job.employer_id}`}&gt;{`Go to employer's page`}&lt;/a&gt;
+            &lt;/Col&gt;
+          &lt;/Row&gt;
+          &lt;Row className="details"&gt;
+            &lt;Col xs={12} md={5} mdOffset={1}&gt;
+              &lt;div&gt;{`Location: ${this.props.job.location}`}&lt;/div&gt;
+              &lt;div&gt;{`Salary: ${this.props.job.salary}`}&lt;/div&gt;
+              &lt;div&gt;{`Grading: ${this.props.job.grading}`}&lt;/div&gt;
+            &lt;/Col&gt;
+            &lt;Col xs={12} md={5}&gt;
+              &lt;div&gt;{t</span>his.props.job.full_time ? <span class="branch-0 cbranch-no" title="branch not covered" >"Full-time" : "Part-time"}&lt;/div&gt;
+              &lt;div&gt;{t</span>his.props.job.contract ? <span class="branch-0 cbranch-no" title="branch not covered" >"Contract" : "Permanent"}&lt;/div&gt;
+              &lt;div&gt;{t</span>his.props.job.offers_visa ? <span class="branch-0 cbranch-no" title="branch not covered" >"Offers visa sponsorship" : ""}&lt;/div&gt;
             &lt;/Col&gt;
           &lt;/Row&gt;
           &lt;Row&gt;
-            {bigFive}
-            {myersBriggs}
+            &lt;Col xs={12}&gt;
+              &lt;div className="description"&gt;
+                {this.props.job.description}
+              &lt;/div&gt;
+            &lt;/Col&gt;
+          &lt;/Row&gt;
+          &lt;Row&gt;
+            &lt;Col xs={12} md={4} mdOffset={4}&gt;
+              &lt;Button type="button" className="btn btn-primary"&gt;&lt;a href={`/jobs/${this.props.job.id}/applications/new`}&gt;{`Apply`}&lt;/a&gt;&lt;/Button&gt;
+            &lt;/Col&gt;
           &lt;/Row&gt;
         &lt;/div&gt;
-      );
-    }
-&nbsp;
-    var postedJobs;
-    if (this.props.currentUser.account_type == "employer") {
-      postedJobs = (
-        &lt;a href="/jobs/new"&gt;{`Post a job`}&lt;/a&gt;
-      );
-    }
-&nbsp;
-    return (
-      &lt;Header currentUser={this.props.currentUser} notice={this.props.notice} alert={this.props.alert}&gt;
-        &lt;Row&gt;
-          &lt;Col md={3}&gt;
-&nbsp;
-          &lt;/Col&gt;
-          &lt;Col md={9}&gt;
-            &lt;h1&gt;{`Dashboard`}&lt;/h1&gt;
-            &lt;Row&gt;
-              &lt;Col md={6}&gt;
-                &lt;ApplicationsContainer currentUser={this.props.currentUser} applications={this.props.applications} /&gt;
-              &lt;/Col&gt;
-              &lt;Col md={6}&gt;
-                {postedJobs}
-              &lt;/Col&gt;
-            &lt;/Row&gt;
-            {personalityCharts}
-          &lt;/Col&gt;
-        &lt;/Row&gt;
       &lt;/Header&gt;
     );
   }

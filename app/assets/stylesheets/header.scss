@@ -24,6 +24,22 @@ body {
       text-shadow: 0 0 1rem map-get($colours, white) !important;
     }
   }
+  ul.dropdown-menu {
+    background-image: -webkit-linear-gradient(top,map-get($colours, charcoal) 0,map-get($colours, black) 100%);
+    background-image: -o-linear-gradient(top,map-get($colours, charcoal) 0,map-get($colours, black) 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(map-get($colours, charcoal)),to(map-get($colours, black)));
+    background-image: linear-gradient(to bottom,map-get($colours, charcoal) 0,map-get($colours, black) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    a {
+      &:hover {
+        color: map-get($colours, white) !important;
+        background-color: map-get($colours, electric-blue) !important;
+        background-image: none;
+      }
+    }
+  }
 }
 
 #wrap {

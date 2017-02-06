@@ -13,7 +13,7 @@ describe('PostJob', () => {
       const form = findRenderedDOMComponentWithTag(component, 'form');
       const inputs = scryRenderedDOMComponentsWithTag(component, 'input');
       expect(form).to.be.ok;
-      expect(inputs.length).to.eql(12);
+      expect(inputs.length).to.eql(15);
     });
   });
 });

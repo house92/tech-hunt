@@ -10,23 +10,28 @@ class JobsController < ApplicationController
             must: [
               match: {
                 description: {
-                  query: params[:title],
+                  query: job_params[:title],
                   operator: "and"
                 }
               },
               match: {
                 location: {
-                  query: params[:location]
+                  query: job_params[:location]
                 }
               }
             ],
             should: [
-              { match: { title: params[:title] }}
-              # { match: { salary: params[:salary] }},
-              # { match: { full_time: params[:full_time] }},
-              # { match: { contract: params[:contract] }},
-              # { match: { grading: params[:grading] }},
-              # { match: { offers_visa: params[:offers_visa] }}
+              { match: { title: job_params[:title] }},
+              { range: {
+                  salary: {
+                    gte: job_params[:min_salary] != "" ? job_params[:min_salary] : 0,
+                    lte: job_params[:max_salary] != "" ? job_params[:max_salary] : 1000000
+                  }
+                }},
+              { terms: { full_time: [job_params[:full_time], job_params[:part_time]] }},
+              { terms: { contract: [job_params[:contract], job_params[:permanent]] }},
+              { match: { grading: job_params[:grading] }},
+              { match: { offers_visa: job_params[:offers_visa] }}
             ]
           }
         }
@@ -40,6 +45,7 @@ class JobsController < ApplicationController
     end
 
   def show
+    @job = Job.find_by(id: params[:id])
   end
 
   def new
@@ -55,7 +61,7 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.permit(:title, :location, :lat, :lng, :salary, :grading, :description, :full_time, :contract, :offers_visa)
+    params.permit(:title, :location, :lat, :lng, :min_salary, :max_salary, :grading, :description, :full_time, :part_time, :permanent, :contract, :offers_visa)
   end
 
   def skills_params

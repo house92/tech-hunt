@@ -15,9 +15,9 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    account = current_user.get_account
-    @applications = account.applications
-    @big_five = account.respond_to?(:big_five) ? account.big_five : nil
-    @myers_briggs = account.respond_to?(:myers_briggs) ? account.myers_briggs : nil
+    @account = current_user.get_account
+    @applications = @account.applications
+    @big_five = @account.respond_to?(:big_five) ? @account.big_five : nil
+    @myers_briggs = @account.respond_to?(:myers_briggs) ? @account.myers_briggs : nil
   end
 end

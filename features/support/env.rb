@@ -3,6 +3,7 @@ SimpleCov.start 'rails' do
   add_filter 'controllers/users'
   add_filter '/channels/'
   add_filter '/jobs/'
+  add_filter '/application_mailer'
 end
 require 'cucumber/rails'
 require 'capybara/cucumber'
