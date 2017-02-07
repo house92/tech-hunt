@@ -36,6 +36,14 @@ Feature: A user can search for jobs
         Then the value of "location" should be "San Diego"
           And the checkbox "full_time" should be checked
 
+      @selenium
+      Scenario: Viewing the search results on a map
+        When I fill in "title" with "javascript"
+          And I fill in "location" with "Manchester"
+          And I click on "Go hunting"
+          And I click on "Map"
+        Then I should see a map
+
       @wip
       Scenario: Adjusting the filters of an existing search with AJAX
         When I fill in "title" with "javascript"

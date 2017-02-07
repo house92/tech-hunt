@@ -1,3 +1,5 @@
+@import 'colours';
+
 .chart-container {
   font-family: 'Open Sans', sans-serif;
   font-size: 11px;
@@ -32,5 +34,37 @@
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;
+  }
+}
+
+.applications {
+  margin: 2rem;
+  padding: 0 1rem;
+  border: 3px solid map-get($colours, charcoal);
+  border-radius: 5px;
+  .application{
+    margin: 1rem;
+    padding: 0 2rem;
+    border: 2px solid map-get($colours, charcoal);
+    border-radius: 5px;
+    & > div > * {
+      padding: 1rem;
+    }
+    .info {
+      border-right: 2px solid map-get($colours, charcoal);
+      .title {
+        font-weight: 600;
+        a {
+          text-decoration: none;
+          color: map-get($colours, electric-blue);
+        }
+      }
+      .name {
+        a {
+          text-decoration: none;
+          color: map-get($colours, electric-blue);
+        }
+      }
+    }
   }
 }

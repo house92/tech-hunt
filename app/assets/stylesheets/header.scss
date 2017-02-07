@@ -24,6 +24,11 @@ body {
       text-shadow: 0 0 1rem map-get($colours, white) !important;
     }
   }
+  .navbar-toggle {
+    .icon-bar {
+      background-color: map-get($colours, electric-blue) !important;
+    }
+  }
   ul.dropdown-menu {
     background-image: -webkit-linear-gradient(top,map-get($colours, charcoal) 0,map-get($colours, black) 100%);
     background-image: -o-linear-gradient(top,map-get($colours, charcoal) 0,map-get($colours, black) 100%);

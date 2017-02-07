@@ -27,10 +27,10 @@ export default class SearchFilters extends Component {
 
         <FormGroup controlId="formControlsTime">
           <Row>
-            <Col xs={6} md={3}>
+            <Col xs={6} md={window.location.pathname == '/' ? 3 : 6}>
               <Checkbox id="full_time" checked={this.props.search.full_time} data-name="full_time" onChange={this.props.onPositiveClick} inline>{`Full-time`}</Checkbox>
             </Col>
-            <Col xs={6} md={3}>
+            <Col xs={6} md={window.location.pathname == '/' ? 3 : 6}>
               <Checkbox checked={!this.props.search.part_time} data-name="part_time" onChange={this.props.onNegativeClick} inline>{`Part-time`}</Checkbox>
             </Col>
           </Row>
@@ -38,10 +38,10 @@ export default class SearchFilters extends Component {
 
         <FormGroup controlId="formControlsDuration">
           <Row>
-            <Col xs={6} md={3}>
+            <Col xs={6} md={window.location.pathname == '/' ? 3 : 6}>
               <Checkbox checked={!this.props.search.permanent} data-name="permanent" onChange={this.props.onNegativeClick} inline>{`Permanent`}</Checkbox>
             </Col>
-            <Col xs={6} md={3}>
+            <Col xs={6} md={window.location.pathname == '/' ? 3 : 6}>
               <Checkbox checked={this.props.search.contract} data-name="contract" onChange={this.props.onPositiveClick} inline>{`Contract`}</Checkbox>
             </Col>
           </Row>
