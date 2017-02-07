@@ -20,16 +20,16 @@ export default class SearchForm extends Component {
       return (
         <form action="/jobs" method="GET">
           <FormGroup controlId="formControlsTitle">
-            <FormControl type="text" name="title" placeholder="Search jobs" />
+            <FormControl type="text" name="title" placeholder="Search jobs" defaultValue={this.props.search.title} onChange={this.props.onValueChange} />
           </FormGroup>
 
           <span>{window.innerWidth >= 500 ? ` in ` : ``}</span>
 
           <FormGroup controlId="formControlsLocation">
             <InputGroup>
-              <FormControl type="text" name="location" placeholder="Location" />
+              <FormControl type="text" name="location" placeholder="Location" defaultValue={this.props.search.location} onChange={this.props.onValueChange} />
               <InputGroup.Button>
-                <Button type="submit">{`Go hunting`}</Button>
+                <Button type="submit" onClick={this.props.getLatLng}>{`Go hunting`}</Button>
               </InputGroup.Button>
             </InputGroup>
           </FormGroup>
@@ -41,16 +41,16 @@ export default class SearchForm extends Component {
         <form action="/jobs" method="GET">
           <Col xs={12} md={5}>
             <FormGroup controlId="formControlsTitle">
-              <FormControl type="text" name="title" placeholder="Search jobs" defaultValue={this.props.search.title} />
+              <FormControl type="text" name="title" placeholder="Search jobs" defaultValue={this.props.search.title} onChange={this.props.onValueChange} />
             </FormGroup>
           </Col>
           {filler}
           <Col xs={12} md={6}>
             <FormGroup controlId="formControlsLocation">
               <InputGroup>
-                <FormControl type="text" name="location" placeholder="Location" defaultValue={this.props.search.location} />
+                <FormControl type="text" name="location" placeholder="Location" defaultValue={this.props.search.location} onChange={this.props.onValueChange} />
                 <InputGroup.Button>
-                  <Button type="submit">{`Go hunting`}</Button>
+                  <Button type="submit" onClick={this.props.getLatLng}>{`Go hunting`}</Button>
                 </InputGroup.Button>
               </InputGroup>
             </FormGroup>

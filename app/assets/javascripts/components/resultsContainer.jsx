@@ -12,6 +12,8 @@ export default class ResultsContainer extends Component {
     this.state = {
       title: this.props.search.title,
       location: this.props.search.location,
+      lat: this.props.search.lat,
+      lng: this.props.search.lng,
       grading: this.props.search.grading,
       min_salary: this.props.search.min_salary,
       max_salary: this.props.search.max_salary,
@@ -24,6 +26,7 @@ export default class ResultsContainer extends Component {
     this.handleValueChange = this.handleValueChange.bind(this);
     this.handlePositiveCheck = this.handlePositiveCheck.bind(this);
     this.handleNegativeCheck = this.handleNegativeCheck.bind(this);
+    this.getLatLng = this.getLatLng.bind(this);
   }
 
   handleValueChange(e) {
@@ -50,6 +53,20 @@ export default class ResultsContainer extends Component {
     this.setState(nextState);
   }
 
+  getLatLng(e) {
+    e.preventDefault();
+    const form = document.getElementsByTagName('form')[0];
+    gmAPI.geocode( { address: this.state.location }, (err, results) => {
+      if (results.status == 'OK') {
+        this.setState({ lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng }, () => {
+          form.submit();
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + err);
+      }
+    });
+  }
+
   render() {
     const results = this.props.jobs.map((job, i) => {
       return <Result key={`results${i + 1}`} job={job} />;
@@ -58,7 +75,7 @@ export default class ResultsContainer extends Component {
     return (
       <Header currentUser={this.props.currentUser} notice={this.props.notice} alert={this.props.alert}>
         <Row>
-          <SearchForm search={this.state} />
+          <SearchForm search={this.state} onValueChange={this.handleValueChange} />
         </Row>
         <Row>
           <Col md={3}>

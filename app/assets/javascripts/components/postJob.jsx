@@ -53,13 +53,13 @@ export default class PostJob extends Component {
   }
 
   getLatLng() {
-    gmAPI.geocode( { address: [this.state.city, this.state.country, this.state.postcode].join(', ')}, function(err, results, status) {
+    gmAPI.geocode( { address: [this.state.city, this.state.country, this.state.postcode].join(', ')}, (err, results) => {
       if (results.status == 'OK') {
         this.setState({ lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng });
       } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+        alert('Geocode was not successful for the following reason: ' + err);
       }
-    }.bind(this));
+    });
   }
 
   toggleCheckbox(e) {

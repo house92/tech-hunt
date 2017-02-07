@@ -16,6 +16,8 @@ class Job < ApplicationRecord
       indexes :description, type: 'text', analyzer: 'english'
       indexes :salary, type: 'integer'
       indexes :location, type: 'string'
+      indexes :lat, type: 'float'
+      indexes :lng, type: 'float'
       indexes :grading, type: 'string'
       indexes :full_time, type: 'boolean'
       indexes :contract, type: 'boolean'

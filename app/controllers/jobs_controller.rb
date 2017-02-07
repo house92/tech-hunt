@@ -5,21 +5,30 @@ class JobsController < ApplicationController
 
   def index
     @search = job_params
+    length_of_latitude = 69.172
+    length_of_longitude = Math.cos(job_params[:lat].to_f) * 69.172
     @jobs = Job.search({
       query: {
           bool: {
             must: [
-              match: {
+              {match: {
                 description: {
                   query: job_params[:title],
                   operator: "and"
                 }
-              },
-              match: {
-                location: {
-                  query: job_params[:location]
+              }},
+              {range: {
+                lat: {
+                  gte: job_params[:lat].to_f - (15 / 69.172),
+                  lte: job_params[:lat].to_f + (15 / 69.172)
                 }
-              }
+              }},
+              {range: {
+                lng: {
+                  gte: job_params[:lng].to_f - (15 / length_of_longitude),
+                  lte: job_params[:lng].to_f + (15 / length_of_longitude)
+                }
+              }}
             ],
             should: [
               { match: { title: job_params[:title] }},
@@ -27,6 +36,11 @@ class JobsController < ApplicationController
                   salary: {
                     gte: job_params[:min_salary] != "" ? job_params[:min_salary] : 0,
                     lte: job_params[:max_salary] != "" ? job_params[:max_salary] : 1000000
+                  }
+                }},
+              { match: {
+                  location: {
+                    query: job_params[:location]
                   }
                 }},
               { terms: { full_time: [job_params[:full_time], job_params[:part_time]] }},
