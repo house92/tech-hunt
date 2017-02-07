@@ -14,26 +14,26 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-02-06T23:43:46+00:00">2017-02-06T23:43:46+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-02-07T11:10:13+00:00">2017-02-07T11:10:13+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">90.48%</span></span>
+    (<span class="covered_percent"><span class="green">90.52%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         72.71
+         72.57
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>29</b> files in total.
-    <b>210</b> relevant lines. 
-    <span class="green"><b>190</b> lines covered</span> and
+    <b>211</b> relevant lines. 
+    <span class="green"><b>191</b> lines covered</span> and
     <span class="red"><b>20</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -93,11 +93,11 @@
       <tr>
         <td class="strong"><a href="#e545e7ac9db515bdb2bc80e7c5ae3301b7116385" class="src_link" title="app/controllers/jobs_controller.rb">app/controllers/jobs_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>74</td>
-        <td>17</td>
-        <td>17</td>
+        <td>75</td>
+        <td>18</td>
+        <td>18</td>
         <td>0</td>
-        <td>1.8</td>
+        <td>4.1</td>
       </tr>
       
       <tr>
@@ -349,19 +349,19 @@
           <div class="file_list_container" id="Controllers">
   <h2>
     <span class="group_name">Controllers</span>
-    (<span class="covered_percent"><span class="green">98.47%</span></span>
+    (<span class="covered_percent"><span class="green">98.48%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         115.79
+         115.24
        </span>
     </span> hits/line)
   </h2>
   <a name="Controllers"></a>
   <div>
     <b>7</b> files in total.
-    <b>131</b> relevant lines. 
-    <span class="green"><b>129</b> lines covered</span> and
+    <b>132</b> relevant lines. 
+    <span class="green"><b>130</b> lines covered</span> and
     <span class="red"><b>2</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -421,11 +421,11 @@
       <tr>
         <td class="strong"><a href="#e545e7ac9db515bdb2bc80e7c5ae3301b7116385" class="src_link" title="app/controllers/jobs_controller.rb">app/controllers/jobs_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>74</td>
-        <td>17</td>
-        <td>17</td>
+        <td>75</td>
+        <td>18</td>
+        <td>18</td>
         <td>0</td>
-        <td>1.8</td>
+        <td>4.1</td>
       </tr>
       
       <tr>
@@ -1437,8 +1437,8 @@
     <h3>app/controllers/jobs_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>17</b> relevant lines. 
-      <span class="green"><b>17</b> lines covered</span> and
+      <b>18</b> relevant lines. 
+      <span class="green"><b>18</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1482,409 +1482,415 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="4" data-linenumber="7">
+          <span class="hits">4</span>
           
-          <code class="ruby">    @jobs = Job.search({</code>
+          <code class="ruby">    @search = job_params</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="covered" data-hits="4" data-linenumber="8">
+          <span class="hits">4</span>
           
-          
-          <code class="ruby">      query: {</code>
+          <code class="ruby">    @jobs = Job.search({</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="9">
           
           
-          <code class="ruby">          bool: {</code>
+          <code class="ruby">      query: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="10">
           
           
-          <code class="ruby">            must: [</code>
+          <code class="ruby">          bool: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="11">
           
           
-          <code class="ruby">              match: {</code>
+          <code class="ruby">            must: [</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="12">
           
           
-          <code class="ruby">                description: {</code>
+          <code class="ruby">              match: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
           
           
-          <code class="ruby">                  query: job_params[:title],</code>
+          <code class="ruby">                description: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
           
           
-          <code class="ruby">                  operator: &quot;and&quot;</code>
+          <code class="ruby">                  query: job_params[:title],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">                }</code>
+          <code class="ruby">                  operator: &quot;and&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby">              },</code>
+          <code class="ruby">                }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">
           
           
-          <code class="ruby">              match: {</code>
+          <code class="ruby">              },</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
           
           
-          <code class="ruby">                location: {</code>
+          <code class="ruby">              match: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
           
           
-          <code class="ruby">                  query: job_params[:location]</code>
+          <code class="ruby">                location: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="20">
           
           
-          <code class="ruby">                }</code>
+          <code class="ruby">                  query: job_params[:location]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
           
           
-          <code class="ruby">              }</code>
+          <code class="ruby">                }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="22">
           
           
-          <code class="ruby">            ],</code>
+          <code class="ruby">              }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="23">
           
           
-          <code class="ruby">            should: [</code>
+          <code class="ruby">            ],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="24">
           
           
-          <code class="ruby">              { match: { title: job_params[:title] }},</code>
+          <code class="ruby">            should: [</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
           
           
-          <code class="ruby">              { range: {</code>
+          <code class="ruby">              { match: { title: job_params[:title] }},</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="26">
           
           
-          <code class="ruby">                  salary: {</code>
+          <code class="ruby">              { range: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
           
           
-          <code class="ruby">                    gte: job_params[:min_salary] != &quot;&quot; ? job_params[:min_salary] : 0,</code>
+          <code class="ruby">                  salary: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="28">
           
           
-          <code class="ruby">                    lte: job_params[:max_salary] != &quot;&quot; ? job_params[:max_salary] : 1000000</code>
+          <code class="ruby">                    gte: job_params[:min_salary] != &quot;&quot; ? job_params[:min_salary] : 0,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="29">
           
           
-          <code class="ruby">                  }</code>
+          <code class="ruby">                    lte: job_params[:max_salary] != &quot;&quot; ? job_params[:max_salary] : 1000000</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">                }},</code>
+          <code class="ruby">                  }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
           
           
-          <code class="ruby">              { terms: { full_time: [job_params[:full_time], job_params[:part_time]] }},</code>
+          <code class="ruby">                }},</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="32">
           
           
-          <code class="ruby">              { terms: { contract: [job_params[:contract], job_params[:permanent]] }},</code>
+          <code class="ruby">              { terms: { full_time: [job_params[:full_time], job_params[:part_time]] }},</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">              { match: { grading: job_params[:grading] }},</code>
+          <code class="ruby">              { terms: { contract: [job_params[:contract], job_params[:permanent]] }},</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
           
           
-          <code class="ruby">              { match: { offers_visa: job_params[:offers_visa] }}</code>
+          <code class="ruby">              { match: { grading: job_params[:grading] }},</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
           
           
-          <code class="ruby">            ]</code>
+          <code class="ruby">              { match: { offers_visa: job_params[:offers_visa] }}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">
           
           
-          <code class="ruby">          }</code>
+          <code class="ruby">            ]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="37">
           
           
-          <code class="ruby">        }</code>
+          <code class="ruby">          }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">
           
           
-          <code class="ruby">      }).records</code>
+          <code class="ruby">        }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="39">
           
           
-          <code class="ruby">      # @jobs = Job.find_by_sql({&quot;</code>
+          <code class="ruby">      }).records</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="40">
           
           
-          <code class="ruby">      #     SELECT j.*, e.*</code>
+          <code class="ruby">      # @jobs = Job.find_by_sql({&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="41">
           
           
-          <code class="ruby">      #       FROM jobs AS J</code>
+          <code class="ruby">      #     SELECT j.*, e.*</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
           
           
-          <code class="ruby">      #         INNER JOIN employers AS e ON j.employer_id = e.id</code>
+          <code class="ruby">      #       FROM jobs AS J</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="43">
           
           
-          <code class="ruby">      #       WHERE ? IN (j.description OR j.title)</code>
+          <code class="ruby">      #         INNER JOIN employers AS e ON j.employer_id = e.id</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">
           
           
-          <code class="ruby">      #   &quot;}, params[:title])</code>
+          <code class="ruby">      #       WHERE ? IN (j.description OR j.title)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      #   &quot;}, params[:title])</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
           
           
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="47">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="47">
+        <li class="covered" data-hits="1" data-linenumber="48">
           <span class="hits">1</span>
           
           <code class="ruby">  def show</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="48">
+        <li class="covered" data-hits="3" data-linenumber="49">
           <span class="hits">3</span>
           
           <code class="ruby">    @job = Job.find_by(id: params[:id])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="never" data-hits="" data-linenumber="50">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="50">
+        <li class="never" data-hits="" data-linenumber="51">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="51">
+        <li class="covered" data-hits="1" data-linenumber="52">
           <span class="hits">1</span>
           
           <code class="ruby">  def new</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="never" data-hits="" data-linenumber="53">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="53">
+        <li class="never" data-hits="" data-linenumber="54">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="54">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def create</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="55">
           <span class="hits">1</span>
           
-          <code class="ruby">    account = current_user.get_account</code>
+          <code class="ruby">  def create</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="56">
           <span class="hits">1</span>
           
-          <code class="ruby">    job = Job.new(job_params)</code>
+          <code class="ruby">    account = current_user.get_account</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
-          <code class="ruby">    job.update(employer_id: account.id)</code>
+          <code class="ruby">    job = Job.new(job_params)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="58">
           <span class="hits">1</span>
           
-          <code class="ruby">    job.save</code>
+          <code class="ruby">    job.update(employer_id: account.id)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="59">
           <span class="hits">1</span>
           
-          <code class="ruby">    job.__elasticsearch__.index_document</code>
+          <code class="ruby">    job.save</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="60">
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    job.__elasticsearch__.index_document</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="61">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="62">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="62">
           
-          <code class="ruby">  private</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="63">
           <span class="hits">1</span>
           
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="64">
+          <span class="hits">1</span>
+          
           <code class="ruby">  def job_params</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="64">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="49" data-linenumber="65">
+          <span class="hits">49</span>
           
           <code class="ruby">    params.permit(:title, :location, :lat, :lng, :min_salary, :max_salary, :grading, :description, :full_time, :part_time, :permanent, :contract, :offers_visa)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="65">
-          
-          
-          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="66">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="67">
           
           
-          <code class="ruby">  # def skills_params</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="68">
           
           
-          <code class="ruby">  #   params.require(:skills).permit(:name)</code>
+          <code class="ruby">  # def skills_params</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="69">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  #   params.require(:skills).permit(:name)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="70">
           
           
-          <code class="ruby">  #</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="71">
           
           
-          <code class="ruby">  # def benefits_params</code>
+          <code class="ruby">  #</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="72">
           
           
-          <code class="ruby">  #   params.require(:benefits).permit(:name)</code>
+          <code class="ruby">  # def benefits_params</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="73">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  #   params.require(:benefits).permit(:name)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
           
           
           <code class="ruby">end</code>

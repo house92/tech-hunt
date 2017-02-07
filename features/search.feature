@@ -2,33 +2,39 @@ Feature: A user can search for jobs
   As a user, I should be able to search for jobs and view them
 
   Background:
-    Given I navigate to "/"
+    Given sample data is loaded
+      And I navigate to "/"
 
     @poltergeist
     Scenario: Submitting a basic search
       Then I should see "Search jobs"
       When I fill in "title" with "javascript"
+        And I fill in "location" with "Manchester"
         And I click on "Go hunting"
       Then the path should be "/jobs/index"
         And I should see "Your search returned"
+        And I should see "JavaScript Developer"
 
+    @selenium
     Scenario: Submitting an advanced search
-      When I fill in "title" with "javascript"
+      When I navigate to "/"
+        And I fill in "title" with "javascript"
         And I click on "Advanced search"
-        And I click on "Full-time"
+        And I check "full_time"
         And I fill in "location" with "London"
         And I click on "Go hunting"
       Then the value of "location" should be "London"
         And the checkbox "full_time" should be checked
 
+      @poltergeist
       Scenario: Adjusting the filters of an existing search
         When I fill in "title" with "javascript"
           And I click on "Go hunting"
-          And I click on "Part-time"
-          And I fill in "location" with "San Francisco"
+          And I check "full_time"
+          And I fill in "location" with "San Diego"
           And I click on "Go hunting"
-        Then the value of "location" should be "San Francisco"
-          And the checkbox "part_time" should be checked
+        Then the value of "location" should be "San Diego"
+          And the checkbox "full_time" should be checked
 
       @wip
       Scenario: Adjusting the filters of an existing search with AJAX

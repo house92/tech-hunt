@@ -34,7 +34,7 @@ body {
       color: map-get($colours, white) !important;
       text-shadow: 0 0 2rem map-get($colours, electric-blue);
     }
-    form {
+    .form {
       @media (min-width: 495px) {
         margin: 6rem 0;
       }
@@ -75,7 +75,7 @@ body {
       }
       .basic-search {
         text-align: right;
-        & > .form-group {
+        & .form-group {
           display: inline-table;
           vertical-align: middle;
           @media (min-width: 777px) {

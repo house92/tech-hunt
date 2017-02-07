@@ -14,5 +14,6 @@ end
 Then(/^the user with e\-mail "([^"]*)" should have a job listed$/) do |email|
   user = User.find_by(email: email)
   account = user.get_account
-  expect(account.jobs.length).to eq(2)
+  new_jobs = Job.where("employer_id = ? AND created_at > ?", account.id, DateTime.now - 0.0001)
+  expect(new_jobs.length).to eq(1)
 end

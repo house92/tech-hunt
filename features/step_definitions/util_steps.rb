@@ -7,6 +7,10 @@ Given(/^I am logged in as "([^"]*)"$/) do |email|
   log_on_as(email)
 end
 
+When(/^I wait$/) do
+  binding.pry
+end
+
 When(/^I navigate to "([^"]*)"$/) do |path|
   visit(path)
 end
@@ -24,6 +28,11 @@ end
 When(/^I choose "([^"]*)"$/) do |selector|
   has_content?("syzygy")
   find(:css, selector).set(true)
+end
+
+When(/^I check "([^"]*)"$/) do |selector|
+  has_content?("syzygy")
+  check selector
 end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |css_selector, text|
@@ -60,7 +69,7 @@ end
 
 Then(/^the checkbox "([^"]*)" should be checked$/) do |checkbox_name|
   checkbox = find_field(checkbox_name)
-  expect(checkbox.checked).to be_true
+  expect(checkbox.checked?).to be_truthy
 end
 
 Then(/^I should be redirected to the dashboard for "([^"]*)"$/) do |email|

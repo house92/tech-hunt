@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
+    @search = job_params
     @jobs = Job.search({
       query: {
           bool: {
