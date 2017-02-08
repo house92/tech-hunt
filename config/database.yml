@@ -81,7 +81,7 @@ test: &test
 production:
   <<: *default
   database: tech_hunt_production
-  username: tech_hunt
+  username: root
   password: <%= ENV['TECH_HUNT_DATABASE_PASSWORD'] %>
 
 cucumber:

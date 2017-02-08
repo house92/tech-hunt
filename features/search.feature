@@ -8,12 +8,13 @@ Feature: A user can search for jobs
     @poltergeist
     Scenario: Submitting a basic search
       Then I should see "Search jobs"
-      When I fill in "title" with "javascript"
-        And I fill in "location" with "Manchester"
+      When I fill in "title" with "developer"
+        And I fill in "location" with "London"
         And I click on "Go hunting"
       Then the path should be "/jobs/index"
         And I should see "Your search returned"
-        And I should see "JavaScript Developer"
+      When I click on "List"
+      Then I should see "Lead Front End Developer"
 
     @selenium
     Scenario: Submitting an advanced search
@@ -29,6 +30,7 @@ Feature: A user can search for jobs
       @poltergeist
       Scenario: Adjusting the filters of an existing search
         When I fill in "title" with "javascript"
+          And I fill in "location" with "Los Angeles"
           And I click on "Go hunting"
           And I check "full_time"
           And I fill in "location" with "San Diego"

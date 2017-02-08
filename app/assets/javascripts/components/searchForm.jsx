@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, InputGroup, ControlLabel, FormGroup, FormControl, Checkbox, Button, Collapse } from 'react-bootstrap';
+import { Row, Col, InputGroup, ControlLabel, FormGroup, FormControl, Button } from 'react-bootstrap';
 
 export default class SearchForm extends Component {
   render() {

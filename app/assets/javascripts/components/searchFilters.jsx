@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, InputGroup, ControlLabel, FormGroup, FormControl, Checkbox, Button, Collapse } from 'react-bootstrap';
+import { Row, Col, InputGroup, ControlLabel, FormGroup, FormControl, Checkbox, Button } from 'react-bootstrap';
 
 const gradings = ["Junior", "Mid-level", "Senior"];
 
