@@ -26,24 +26,24 @@ export default class PostJob extends Component {
       postcode: "",
       offersVisa: false
     };
-    this.handleAddSkill = this.handleAddSkill.bind(this);
-    this.handleAddBenefit = this.handleAddBenefit.bind(this);
+    // this.handleAddSkill = this.handleAddSkill.bind(this);
+    // this.handleAddBenefit = this.handleAddBenefit.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
     this.getLatLng = this.getLatLng.bind(this);
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
   }
 
-  handleAddSkill(e) {
-    e.preventDefault();
-    this.setState({ skills: this.state.skills.conact([e.target.value]) });
-    e.target.value = "";
-  }
-
-  handleAddBenefit(e) {
-    e.preventDefault();
-    this.setState({ benefits: this.state.benefits.conact([e.target.value]) });
-    e.target.value = "";
-  }
+  // handleAddSkill(e) {
+  //   e.preventDefault();
+  //   this.setState({ skills: this.state.skills.conact([e.target.value]) });
+  //   e.target.value = "";
+  // }
+  //
+  // handleAddBenefit(e) {
+  //   e.preventDefault();
+  //   this.setState({ benefits: this.state.benefits.conact([e.target.value]) });
+  //   e.target.value = "";
+  // }
 
   updateLocation(e) {
     var nextState = _.cloneDeep(this.state);
@@ -72,11 +72,11 @@ export default class PostJob extends Component {
     });
 
     var hiddenSkills = this.state.skills.map((skill, i) => {
-      return <FormControl type="hidden" name="skills[name]" value={skill} key={`skill${i + 1}`} />;
+      // return <FormControl type="hidden" name="skills[name]" value={skill} key={`skill${i + 1}`} />;
     });
 
     var hiddenBenfits = this.state.skills.map((benefit, i) => {
-      return <FormControl type="hidden" name="benefits[name]" value={benefit} key={`benefit${i + 1}`} />;
+      // return <FormControl type="hidden" name="benefits[name]" value={benefit} key={`benefit${i + 1}`} />;
     });
 
     var hiddenLatLng = (
@@ -134,7 +134,7 @@ export default class PostJob extends Component {
               </FormGroup>
 
               <FormGroup controlId="control-offers-visa">
-                <Checkbox name="offers_visa" value={this.state.offersVisa} checked={this.state.offersVisa} onClick={this.toggleCheckbox}>{`Visa sponsorship available`}</Checkbox>
+                <Checkbox name="offers_visa" value={this.state.offersVisa} checked={this.state.offersVisa} onChange={this.toggleCheckbox}>{`Visa sponsorship available`}</Checkbox>
               </FormGroup>
 
               <FormGroup controlId="control-skills">

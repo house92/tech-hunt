@@ -2,6 +2,7 @@ import React from 'react';
 import { Simulate, renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass, findRenderedDOMComponentWithTag, findRenderedDOMComponentWithClass } from 'react-addons-test-utils';
 import Dashboard from '../app/assets/javascripts/components/dashboard.js';
 import { expect } from 'chai';
+global.$ = global.jQuery = require('jquery');
 
 describe('Dashboard', () => {
   describe('render', () => {

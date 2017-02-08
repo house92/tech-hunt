@@ -23,9 +23,9 @@ Rails.application.routes.draw do
     post 'tests/myers_briggs' => 'tests#myers_briggs'
   end
 
-  resources :hunters, only: [:create, :update]
+  resources :hunters, only: [:show, :create, :update]
 
-  resources :employers, only: [:create, :update]
+  resources :employers, only: [:show, :create, :update]
 
   get '/applications/accounts' => 'applications#accounts'
 

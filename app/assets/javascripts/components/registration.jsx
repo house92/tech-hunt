@@ -17,7 +17,7 @@ export default class Registration extends Component {
       last_name: '',
       company_name: ''
     };
-    this.passwordLengthCheck = this.passwordLengthCheck.bind(this);
+    // this.passwordLengthCheck = this.passwordLengthCheck.bind(this);
     this._handleInputChange = this._handleInputChange.bind(this);
     this._handleRegistrationClick = this._handleRegistrationClick.bind(this);
     this.setAccountType = this.setAccountType.bind(this);
@@ -35,21 +35,19 @@ export default class Registration extends Component {
   }
 
   _handleRegistrationClick(e) {
-    e.preventDefault();
-    $.ajax({
-      method: "POST",
-      url: "/users.json",
-      data: {
-        user: {
-          email: this.state.email,
-          password: this.state.password,
-          password_confirmation: this.state.password_confirmation,
-          account_type: this.state.account_type
-        },
-        authenticity_token: Functions.getMetaContent("csrf-token")
-      }
-    })
-    .done(function(user){
+    if (e.preventDefault) {
+      e.preventDefault();
+    }
+
+    $.post('/users.json', {
+      user: {
+        email: this.state.email,
+        password: this.state.password,
+        password_confirmation: this.state.password_confirmation,
+        account_type: this.state.account_type
+      },
+      authenticity_token: Functions.getMetaContent("csrf-token")
+    }, (user) => {
       if (this.state.account_type == "hunter") {
         $.post("/hunters",
           {
@@ -94,18 +92,17 @@ export default class Registration extends Component {
           this.setState({ deviseErrorMessages: Functions.convertErrors(err) });
         });
       }
-    }.bind(this))
-    .fail((err) => {
+    }).fail((err) => {
       this.setState({ deviseErrorMessages: Functions.convertErrors(err) });
     });
 
   }
 
-  passwordLengthCheck(e) {
-    if (e.target.value.length < this.props.minimalPasswordLength) {
-      return <em>(this.props.minimalPasswordLength characters minimum)</em>;
-    }
-  }
+  // passwordLengthCheck(e) {
+  //   if (e.target.value.length < this.props.minimalPasswordLength) {
+  //     return <em>(this.props.minimalPasswordLength characters minimum)</em>;
+  //   }
+  // }
 
   setAccountType(e) {
     this.setState({ account_type: e.target.value });
@@ -113,6 +110,7 @@ export default class Registration extends Component {
 
   render() {
     var accountFields;
+    var hunterOAuth;
     if (this.state.account_type == "hunter") {
       accountFields = (
         <div className="account-fields">
@@ -126,6 +124,15 @@ export default class Registration extends Component {
           </div>
         </div>
       );
+      hunterOAuth = (
+        <Row>
+          <Col xs={12}>
+            <div className="oAuth">
+              <a href={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${this.props.clientId}`}>{`Sign in via Github`}</a>
+            </div>
+          </Col>
+        </Row>
+      );
     } else if (this.state.account_type == "employer") {
       accountFields = (
         <div className="account-fields">
@@ -134,6 +141,9 @@ export default class Registration extends Component {
             <FormControl type="text" name="company_name" placeholder="Company name" value={this.state.company_name} onChange={this._handleInputChange} />
           </div>
         </div>
+      );
+      hunterOAuth= (
+        <div style={{ padding: '2rem' }}></div>
       );
     }
 
@@ -170,8 +180,8 @@ export default class Registration extends Component {
 
                 <div className="field">
                   <ControlLabel>{`Select account type:`}</ControlLabel>
-                  <Radio name="account_type" defaultChecked inline value="hunter" onClick={this.setAccountType}>{`Hunter`}</Radio>
-                  <Radio name="account_type" inline value="employer" onClick={this.setAccountType}>{`Employer`}</Radio>
+                  <Radio name="account_type" defaultChecked inline value="hunter" onChange={this.setAccountType}>{`Hunter`}</Radio>
+                  <Radio name="account_type" inline value="employer" onChange={this.setAccountType}>{`Employer`}</Radio>
                 </div>
 
                 {accountFields}
@@ -184,13 +194,7 @@ export default class Registration extends Component {
                 </Col>
               </form>
 
-              <Row>
-                <Col xs={12}>
-                  <div className="oAuth">
-                    <a href={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${this.props.clientId}`}>{`Sign in via Github`}</a>
-                  </div>
-                </Col>
-              </Row>
+              {hunterOAuth}
             </Well>
           </Col>
         </Row>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for jobShow.js</title>
+    <title>Code coverage report for searchFilters.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="index.html">All files</a> jobShow.js
+      <a href="index.html">All files</a> searchFilters.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -25,14 +25,14 @@
         <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>7/10</span>
+        <span class='fraction'>4/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -98,24 +98,26 @@
 53
 54
 55
-56</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+56
+57</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -154,57 +156,58 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
-import Header from './header.jsx';
+import { Row, Col, InputGroup, ControlLabel, FormGroup, FormControl, Checkbox, Button } from 'react-bootstrap';
 &nbsp;
-export default class JobShow extends Component {
+const gradings = ["Junior", "Mid-level", "Senior"];
+&nbsp;
+export default class SearchFilters extends Component {
   render() {
-    var applyButton;
-    if (this.props.currentUser &amp;&amp; this.props.currentUser.account_type == "hunter") {
-      applyButton = (
-        &lt;Row&gt;
-          &lt;Col xs={12} md={4} mdOffset={4}&gt;
-            &lt;a href={`/jobs/${this.props.job.id}/applications/new`}&gt;&lt;Button type="button" className="btn btn-primary"&gt;{`Apply`}&lt;/Button&gt;&lt;/a&gt;
-          &lt;/Col&gt;
-        &lt;/Row&gt;
-      );
-    }
+    const gradingsOptions = gradings.map((grading, i) =&gt; {
+      return &lt;option key={`grading${i + 1}`} value={grading}&gt;{grading}&lt;/option&gt;;
+    });
 &nbsp;
     return (
-      &lt;Header currentUser={this.props.currentUser} notice={this.props.notice} alert={this.props.alert}&gt;
-        &lt;Row&gt;
-          &lt;Col xs={12} md={8} mdOffset={2} lg={6} lgOffset={3}&gt;
-            &lt;div className="job"&gt;
-              &lt;Row&gt;
-                &lt;Col xs={12}&gt;
-                  &lt;h1 className="title"&gt;{this.props.job.title}&lt;/h1&gt;
-                  &lt;a href={`/employers/${this.props.job.employer_id}`}&gt;{`Go to employer's page`}&lt;/a&gt;
-                &lt;/Col&gt;
-              &lt;/Row&gt;
-              &lt;Row className="details"&gt;
-                &lt;Col xs={12} md={5} mdOffset={1}&gt;
-                  &lt;div&gt;{`Location: ${this.props.job.location}`}&lt;/div&gt;
-                  &lt;div&gt;{`Salary: ${this.props.job.salary}`}&lt;/div&gt;
-                  &lt;div&gt;{`Grading: ${this.props.job.grading}`}&lt;/div&gt;
-                &lt;/Col&gt;
-                &lt;Col xs={12} md={5}&gt;
-                  &lt;div&gt;{t</span>his.props.job.full_time ? <span class="branch-0 cbranch-no" title="branch not covered" >"Full-time" : "Part-time"}&lt;/div&gt;
-                  &lt;div&gt;{t</span>his.props.job.contract ? <span class="branch-0 cbranch-no" title="branch not covered" >"Contract" : "Permanent"}&lt;/div&gt;
-                  &lt;div&gt;{t</span>his.props.job.offers_visa ? <span class="branch-0 cbranch-no" title="branch not covered" >"Offers visa sponsorship" : ""}&lt;/div&gt;
-                &lt;/Col&gt;
-              &lt;/Row&gt;
-              &lt;Row&gt;
-                &lt;Col xs={12}&gt;
-                  &lt;div className="description"&gt;
-                    {this.props.job.description}
-                  &lt;/div&gt;
-                &lt;/Col&gt;
-              &lt;/Row&gt;
-              {applyButton}
-            &lt;/div&gt;
-          &lt;/Col&gt;
-        &lt;/Row&gt;
-      &lt;/Header&gt;
+      &lt;div className="search-filter"&gt;
+        &lt;FormGroup controlId="formControlsGrading"&gt;
+          &lt;ControlLabel&gt;{`Grading:`}&lt;/ControlLabel&gt;
+          &lt;FormControl componentClass="select" name="grading" defaultValue={this.props.search.grading} onChange={this.props.onValueChange}&gt;
+            {gradingsOptions}
+          &lt;/FormControl&gt;
+        &lt;/FormGroup&gt;
+&nbsp;
+        &lt;FormGroup controlId="formControlsSalary"&gt;
+          &lt;ControlLabel&gt;{`From`}&lt;/ControlLabel&gt;
+          &lt;FormControl type="number" min={0} name="min_salary" defaultValue={this.props.search.min_salary} onChange={this.props.onValueChange} /&gt;
+          &lt;ControlLabel&gt;{`to`}&lt;/ControlLabel&gt;
+          &lt;FormControl type="number" min={0} name="max_salary" defaultValue={this.props.search.max_salary} onChange={this.props.onValueChange} /&gt;
+        &lt;/FormGroup&gt;
+&nbsp;
+        &lt;FormGroup controlId="formControlsTime"&gt;
+          &lt;Row&gt;
+            &lt;Col xs={6} md={w</span>indow.location.pathname == '/' ? <span class="branch-0 cbranch-no" title="branch not covered" >3 : 6}&gt;
+              &lt;Checkbox id="full_time" checked={this.props.search.full_time} data-name="full_time" onChange={this.props.onPositiveClick} inline&gt;{`Full-time`}&lt;/Checkbox&gt;
+            &lt;/Col&gt;
+            &lt;Col xs={6} md={w</span>indow.location.pathname == '/' ? <span class="branch-0 cbranch-no" title="branch not covered" >3 : 6}&gt;
+              &lt;Checkbox checked={!this.props.search.part_time} data-name="part_time" onChange={this.props.onNegativeClick} inline&gt;{`Part-time`}&lt;/Checkbox&gt;
+            &lt;/Col&gt;
+          &lt;/Row&gt;
+        &lt;/FormGroup&gt;
+&nbsp;
+        &lt;FormGroup controlId="formControlsDuration"&gt;
+          &lt;Row&gt;
+            &lt;Col xs={6} md={w</span>indow.location.pathname == '/' ? <span class="branch-0 cbranch-no" title="branch not covered" >3 : 6}&gt;
+              &lt;Checkbox checked={!this.props.search.permanent} data-name="permanent" onChange={this.props.onNegativeClick} inline&gt;{`Permanent`}&lt;/Checkbox&gt;
+            &lt;/Col&gt;
+            &lt;Col xs={6} md={w</span>indow.location.pathname == '/' ? <span class="branch-0 cbranch-no" title="branch not covered" >3 : 6}&gt;
+              &lt;Checkbox checked={this.props.search.contract} data-name="contract" onChange={this.props.onPositiveClick} inline&gt;{`Contract`}&lt;/Checkbox&gt;
+            &lt;/Col&gt;
+          &lt;/Row&gt;
+        &lt;/FormGroup&gt;
+&nbsp;
+        &lt;FormGroup controlId="formControlsVisa"&gt;
+          &lt;Checkbox checked={this.props.search.offers_visa} data-name="offers_visa" onChange={this.props.onPositiveClick} inline&gt;{`Offers visa`}&lt;/Checkbox&gt;
+        &lt;/FormGroup&gt;
+      &lt;/div&gt;
     );
   }
 }

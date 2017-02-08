@@ -1,10 +1,11 @@
 import React from 'react';
-import { Simulate, renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass } from 'react-addons-test-utils';
+import { Simulate, renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass, findRenderedDOMComponentWithTag, findRenderedDOMComponentWithClass } from 'react-addons-test-utils';
 import Header from '../app/assets/javascripts/components/header.js';
 import { expect } from 'chai';
-// import sinon from 'sinon';
+import sinon from 'sinon';
 // import sinonChai from 'sinon-chai';
 // chai.use(sinonChai);
+const clock = sinon.useFakeTimers();
 
 describe('Header', () => {
   describe('render', () => {
@@ -17,7 +18,39 @@ describe('Header', () => {
       expect(aElements.length).to.eql(3);
       expect(aElements[aElements.length - 1].textContent).to.eql('Sign up');
     });
+    it('should show a notice if provided', () => {
+      const component = renderIntoDocument(
+        <Header notice={"Hello world"} />
+      );
 
+      var notice = findRenderedDOMComponentWithClass(component, 'notice');
+      expect(notice.textContent).to.eql("Hello world");
+
+      clock.tick(3000);
+      notice = findRenderedDOMComponentWithClass(component, 'notice');
+      expect(notice.textContent).to.not.eql("Hello world");
+    });
+    it('should show a alert if provided', () => {
+      const component = renderIntoDocument(
+        <Header alert={"Hello world"} />
+      );
+
+      var alert = findRenderedDOMComponentWithClass(component, 'alert');
+      expect(alert.textContent).to.eql("Hello world");
+
+      clock.tick(3000);
+      alert = findRenderedDOMComponentWithClass(component, 'alert');
+      expect(alert.textContent).to.not.eql("Hello world");
+    });
+    // it('should show a fixed footer if on the homepage', () => {
+    //   window.location.pathname = "/";
+    //   const component = renderIntoDocument(
+    //     <Header alert={"Hello world"} />
+    //   );
+    //
+    //   const footer = findRenderedDOMComponentWithClass(component, 'navbar-fixed-bottom');
+    //   expect(footer).to.be.ok;
+    // });
   });
 
   // describe('clicking on a link', () => {

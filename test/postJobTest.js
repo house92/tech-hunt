@@ -16,4 +16,23 @@ describe('PostJob', () => {
       expect(inputs.length).to.eql(15);
     });
   });
+
+  describe('entering data', () => {
+    it('should update its location', () => {
+      const component = renderIntoDocument(
+        <PostJob />
+      );
+
+      const inputs = scryRenderedDOMComponentsWithTag(component, 'input');
+      const cityInput = inputs[1];
+      const offersVisa = inputs[inputs.length - 3];
+
+      cityInput.value = "London";
+      Simulate.keyUp(cityInput);
+      Simulate.change(offersVisa, {target: {checked: true}});
+
+      expect(component.state.city).to.eql("London");
+      expect(component.state.offersVisa).to.be.ok;
+    });
+  });
 });

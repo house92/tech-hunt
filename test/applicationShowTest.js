@@ -24,7 +24,7 @@ describe('Reading an application', () => {
   describe('render', () => {
     it('should show the name of the applicant as a link', () => {
       const component = renderIntoDocument(
-        <ApplicationShow application={application} />
+        <ApplicationShow application={application} hunter={hunter} job={job} />
       );
 
       const applicantName = findRenderedDOMComponentWithClass(component, 'name');
@@ -35,7 +35,7 @@ describe('Reading an application', () => {
 
     it('should show the title of the job as a link', () => {
       const component = renderIntoDocument(
-        <ApplicationShow application={application} />
+        <ApplicationShow application={application} hunter={hunter} job={job} />
       );
 
       const jobTitle = findRenderedDOMComponentWithClass(component, 'title');
@@ -46,7 +46,7 @@ describe('Reading an application', () => {
 
     it('should show the body of the application', () => {
       const component = renderIntoDocument(
-        <ApplicationShow application={application} />
+        <ApplicationShow application={application} hunter={hunter} job={job} />
       );
 
       const applicationBody = findRenderedDOMComponentWithClass(component, 'body');

@@ -1,6 +1,13 @@
 class HuntersController < ApplicationController
   before_filter :authenticate_user!, only: [:edit, :update, :destroy]
 
+  def show
+    @account = Hunter.find_by(id: params[:id])
+    @user = @account.user
+    @big_five = @account.big_five
+    @myers_briggs = @account.myers_briggs
+  end
+
   def create
     Hunter.create(hunter_params)
   end

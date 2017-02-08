@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for jobShow.js</title>
+    <title>Code coverage report for searchForm.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="index.html">All files</a> jobShow.js
+      <a href="index.html">All files</a> searchForm.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>9/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70% </span>
+        <span class="strong">37.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>7/10</span>
+        <span class='fraction'>3/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>9/10</span>
       </div>
     </div>
   </div>
@@ -98,31 +98,34 @@
 53
 54
 55
-56</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+56
+57
+58
+59
+60
+61
+62
+63
+64</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">281x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -130,6 +133,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -154,58 +170,66 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
-import Header from './header.jsx';
+import { Row, Col, InputGroup, ControlLabel, FormGroup, FormControl, Button } from 'react-bootstrap';
 &nbsp;
-export default class JobShow extends Component {
+export default class SearchForm extends Component {
   render() {
-    var applyButton;
-    if (this.props.currentUser &amp;&amp; this.props.currentUser.account_type == "hunter") {
-      applyButton = (
-        &lt;Row&gt;
-          &lt;Col xs={12} md={4} mdOffset={4}&gt;
-            &lt;a href={`/jobs/${this.props.job.id}/applications/new`}&gt;&lt;Button type="button" className="btn btn-primary"&gt;{`Apply`}&lt;/Button&gt;&lt;/a&gt;
-          &lt;/Col&gt;
-        &lt;/Row&gt;
+    var filler;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (window.innerWidth &gt;= 500) {
+      filler = (
+        &lt;Col md={1}&gt;
+          &lt;span&gt;{<span class="branch-1 cbranch-no" title="branch not covered" >window.innerWidth &gt;= 500 ? ` in ` : ``}&lt;/span&gt;</span>
+        &lt;/Col&gt;
       );
     }
 &nbsp;
-    return (
-      &lt;Header currentUser={this.props.currentUser} notice={this.props.notice} alert={this.props.alert}&gt;
-        &lt;Row&gt;
-          &lt;Col xs={12} md={8} mdOffset={2} lg={6} lgOffset={3}&gt;
-            &lt;div className="job"&gt;
-              &lt;Row&gt;
-                &lt;Col xs={12}&gt;
-                  &lt;h1 className="title"&gt;{this.props.job.title}&lt;/h1&gt;
-                  &lt;a href={`/employers/${this.props.job.employer_id}`}&gt;{`Go to employer's page`}&lt;/a&gt;
-                &lt;/Col&gt;
-              &lt;/Row&gt;
-              &lt;Row className="details"&gt;
-                &lt;Col xs={12} md={5} mdOffset={1}&gt;
-                  &lt;div&gt;{`Location: ${this.props.job.location}`}&lt;/div&gt;
-                  &lt;div&gt;{`Salary: ${this.props.job.salary}`}&lt;/div&gt;
-                  &lt;div&gt;{`Grading: ${this.props.job.grading}`}&lt;/div&gt;
-                &lt;/Col&gt;
-                &lt;Col xs={12} md={5}&gt;
-                  &lt;div&gt;{t</span>his.props.job.full_time ? <span class="branch-0 cbranch-no" title="branch not covered" >"Full-time" : "Part-time"}&lt;/div&gt;
-                  &lt;div&gt;{t</span>his.props.job.contract ? <span class="branch-0 cbranch-no" title="branch not covered" >"Contract" : "Permanent"}&lt;/div&gt;
-                  &lt;div&gt;{t</span>his.props.job.offers_visa ? <span class="branch-0 cbranch-no" title="branch not covered" >"Offers visa sponsorship" : ""}&lt;/div&gt;
-                &lt;/Col&gt;
-              &lt;/Row&gt;
-              &lt;Row&gt;
-                &lt;Col xs={12}&gt;
-                  &lt;div className="description"&gt;
-                    {this.props.job.description}
-                  &lt;/div&gt;
-                &lt;/Col&gt;
-              &lt;/Row&gt;
-              {applyButton}
-            &lt;/div&gt;
+    const hiddenValues = Object.keys(this.props.search).map((key, i) =&gt; {
+      return &lt;FormControl key={`state${i}`} type="hidden" name={key} value={this.props.search[`${key}`]} /&gt;;
+    });
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (window.location.pathname == "/") {
+<span class="cstat-no" title="statement not covered" >      return (</span>
+        &lt;form action="/jobs" method="GET"&gt;
+          &lt;FormGroup controlId="formControlsTitle"&gt;
+            &lt;FormControl type="text" name="title" placeholder="Search jobs" defaultValue={this.props.search.title} onChange={this.props.onValueChange} /&gt;
+          &lt;/FormGroup&gt;
+&nbsp;
+          &lt;span&gt;{window.innerWidth &gt;= 500 ? ` in ` : ``}&lt;/span&gt;
+&nbsp;
+          &lt;FormGroup controlId="formControlsLocation"&gt;
+            &lt;InputGroup&gt;
+              &lt;FormControl type="text" name="location" placeholder="Location" defaultValue={this.props.search.location} onChange={this.props.onValueChange} /&gt;
+              &lt;InputGroup.Button&gt;
+                &lt;Button type="submit" onClick={this.props.getLatLng}&gt;{`Go hunting`}&lt;/Button&gt;
+              &lt;/InputGroup.Button&gt;
+            &lt;/InputGroup&gt;
+          &lt;/FormGroup&gt;
+          {hiddenValues}
+        &lt;/form&gt;
+      );
+    } else {
+      return (
+        &lt;form action="/jobs" method="GET"&gt;
+          &lt;Col xs={12} md={5}&gt;
+            &lt;FormGroup controlId="formControlsTitle"&gt;
+              &lt;FormControl type="text" name="title" placeholder="Search jobs" defaultValue={this.props.search.title} onChange={this.props.onValueChange} /&gt;
+            &lt;/FormGroup&gt;
           &lt;/Col&gt;
-        &lt;/Row&gt;
-      &lt;/Header&gt;
-    );
+          {filler}
+          &lt;Col xs={12} md={6}&gt;
+            &lt;FormGroup controlId="formControlsLocation"&gt;
+              &lt;InputGroup&gt;
+                &lt;FormControl type="text" name="location" placeholder="Location" defaultValue={this.props.search.location} onChange={this.props.onValueChange} /&gt;
+                &lt;InputGroup.Button&gt;
+                  &lt;Button type="submit" onClick={this.props.getLatLng}&gt;{`Go hunting`}&lt;/Button&gt;
+                &lt;/InputGroup.Button&gt;
+              &lt;/InputGroup&gt;
+            &lt;/FormGroup&gt;
+          &lt;/Col&gt;
+          {hiddenValues}
+        &lt;/form&gt;
+      );
+    }
   }
 }
 &nbsp;</pre></td></tr>

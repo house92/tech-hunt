@@ -46,7 +46,7 @@
         1,
         null,
         1,
-        1,
+        8,
         null,
         null
       ],
@@ -98,37 +98,55 @@
         1,
         null
       ],
-      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/social_medium.rb": [
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/pages_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/hunters_controller.rb": [
         1,
         1,
         null,
         1,
         1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        0,
-        0,
-        0,
         null,
         null,
         1,
-        0,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/hunter.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/employers_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
         null,
         null,
+        1,
+        1,
+        1,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+        null
+      ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/employer.rb": [
+        1,
+        1,
+        1,
+        1,
         null
       ],
       "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/applications_controller.rb": [
@@ -167,34 +185,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/employers_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/hunters_controller.rb": [
         0,
         0,
         0,
@@ -294,12 +284,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/controllers/pages_controller.rb": [
         0,
         0,
         0,
@@ -438,23 +422,6 @@
         0,
         0
       ],
-      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/employer.rb": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/hunter.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/job.rb": [
         0,
         0,
@@ -511,6 +478,39 @@
         0,
         0
       ],
+      "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/social_medium.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "/Users/samhouse/Documents/Coding/bootcamp/final_project/tech_hunt/app/models/user_skill.rb": [
         0,
         0,
@@ -518,6 +518,6 @@
         0
       ]
     },
-    "timestamp": 1486568207
+    "timestamp": 1486590482
   }
 }

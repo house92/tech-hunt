@@ -2,6 +2,8 @@ import React from 'react';
 import { Simulate, renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedDOMComponentsWithClass, findRenderedDOMComponentWithTag, findRenderedDOMComponentWithClass } from 'react-addons-test-utils';
 import HomePage from '../app/assets/javascripts/components/homePage.js';
 import { expect } from 'chai';
+import sinon from 'sinon';
+const clock = sinon.useFakeTimers();
 
 describe('HomePage', () => {
   describe('render', () => {

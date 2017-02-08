@@ -26,7 +26,7 @@ describe('Result', () => {
 
       expect(title.textContent).to.eql(job.title);
       expect(description.textContent).to.eql(job.description);
-      expect(parseInt(salary.textContent)).to.eql(job.salary);
+      expect(parseInt(salary.textContent.substr(1, 99))).to.eql(job.salary);
     });
   });
 });

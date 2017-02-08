@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">76.19% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/12</span>
+        <span class='fraction'>16/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">37.5% </span>
+        <span class="strong">27.78% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>3/8</span>
+        <span class='fraction'>5/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>1/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">76.19% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/12</span>
+        <span class='fraction'>16/21</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -91,7 +91,25 @@
 46
 47
 48
-49</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -101,12 +119,30 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
@@ -144,18 +180,36 @@ import { Grid, Row, Col, Jumbotron, Image } from 'react-bootstrap';
 import Header from './header.jsx';
 import Search from './search.jsx';
 &nbsp;
-const beach = "/assets/_qnpkc4c6e4-anders-wideskott.jpg";
-const desk = "/assets/lrssalok1fu-rawpixel-com.jpg";
-const cityscape = "/assets/rxnxdbgsj0m-josh-swift.jpg";
-const nighttime_city = "/assets/w4dzcoygt4e-anders-jilden.jpg";
+const beach = {landscape: "/assets/beach.jpg", portrait: "/assets/beach-portrait.jpg"};
+const map = {landscape: "/assets/map.jpg", portrait: "/assets/map-portrait.jpg"};
+const skyline = {landscape: "/assets/skyline.jpg", portrait: "/assets/skyline-portrait.jpg"};
+const skyscrapers = {landscape: "/assets/skyscrapers.jpg", portrait: "/assets/skyscrapers-portrait.jpg"};
 &nbsp;
 const chance = Math.random();
+c</span>onst background = c</span>hance &gt; 0.5 ? chance &gt; 0.75 ? beach : <span class="branch-1 cbranch-no" title="branch not covered" >map : <span class="branch-1 cbranch-no" title="branch not covered" >chance &lt; 0.25 ? skyline : skyscrapers;
 &nbsp;
 export default class HomePage extends Component {
   constructor(props) <span class="branch-1 cbranch-no" title="branch not covered" >{</span>
     super(props);
-    this.state = { background: c</span>hance &gt; 0.5 ? <span class="branch-0 cbranch-no" title="branch not covered" >chance &gt; 0.75 ? beach : desk : c</span>hance &lt; 0.25 ? <span class="branch-0 cbranch-no" title="branch not covered" >cityscape : nighttime_city };
+    this.state = { background: w</span></span>indow.innerWidth &lt; window.innerHeight &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >window.innerWidth &lt; 500 ? <span class="branch-0 cbranch-no" title="branch not covered" >background.portrait : background.landscape };
   }
+&nbsp;
+  componentDidMount() {
+    var screenWidth;
+    setTimeout(<span class="fstat-no" title="function not covered" >() =&gt; </span>{
+<span class="cstat-no" title="statement not covered" >      screenWidth = window.innerWidth;</span>
+    }, 10);
+    window.addEventListener('resize', <span class="fstat-no" title="function not covered" >() =&gt; </span>{
+<span class="cstat-no" title="statement not covered" >      if (window.innerWidth != screenWidth) {</span>
+<span class="cstat-no" title="statement not covered" >        if (window.innerWidth &lt; window.innerHeight &amp;&amp; window.innerWidth &lt; 500) {</span>
+<span class="cstat-no" title="statement not covered" >          this.setState({ background: background.portrait });</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          this.setState({ background: background.landscape });</span>
+        }
+      }
+    });
+  }
+&nbsp;
   render() {
     return (
       &lt;Grid fluid&gt;
@@ -193,7 +247,7 @@ export default class HomePage extends Component {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Feb 06 2017 14:32:34 GMT+0000 (GMT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Feb 08 2017 22:52:10 GMT+0000 (GMT)
 </div>
 </div>
 <script src="prettify.js"></script>

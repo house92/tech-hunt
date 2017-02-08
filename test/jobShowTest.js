@@ -4,6 +4,9 @@ import JobShow from '../app/assets/javascripts/components/jobShow.js';
 import { expect } from 'chai';
 
 describe('Show a job', () => {
+  const user = {
+    account_type: "hunter"
+  }
   const job = {
     title: "Tech Wizard",
     description: "A highly skilled web developer for part-time role. Must be mutant-friendly.",
@@ -36,7 +39,7 @@ describe('Show a job', () => {
 
     it('should provide a button to apply for the job', () => {
       const component = renderIntoDocument(
-        <JobShow job={job} />
+        <JobShow job={job} currentUser={user} />
       );
 
       const jobContainer = findRenderedDOMComponentWithClass(component, 'job');

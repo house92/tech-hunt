@@ -5,7 +5,7 @@ import Header from './header.jsx';
 export default class JobShow extends Component {
   render() {
     var applyButton;
-    if (this.props.currentUser.account_type == "hunter") {
+    if (this.props.currentUser && this.props.currentUser.account_type == "hunter") {
       applyButton = (
         <Row>
           <Col xs={12} md={4} mdOffset={4}>
