@@ -6,6 +6,6 @@ Feature: A hunter can sign in via Github
 
     @selenium
     Scenario: Signing in with Github
-      When I click on "Log on via Github"
+      When I click on "Sign in via Github"
       Then there should be a new Social Medium
         And the path should be "/users/dashboard"
