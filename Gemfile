@@ -66,6 +66,7 @@ gem 'browserify-rails'
 gem 'react-rails'
 
 gem 'devise'
+gem 'omniauth'
 gem 'figaro'
 
 gem 'elasticsearch-rails'

@@ -1,1 +1,1 @@
-<%= react_component 'Registration', { currentUser: current_user, alert: alert, notice: notice, deviseErrorMessages: (devise_error_messages!).html_safe } %>
+<%= react_component 'Registration', { currentUser: current_user, alert: alert, notice: notice, deviseErrorMessages: (devise_error_messages!).html_safe, clientId: ENV["GH_CLIENT_ID"] } %>

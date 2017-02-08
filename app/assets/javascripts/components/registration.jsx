@@ -187,7 +187,7 @@ export default class Registration extends Component {
               <Row>
                 <Col xs={12}>
                   <div className="oAuth">
-                    <a href={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${this.props.clientId}`}>{`Log on via Github`}</a>
+                    <a href={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${this.props.clientId}`}>{`Sign in via Github`}</a>
                   </div>
                 </Col>
               </Row>

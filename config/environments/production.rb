@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.browserify_rails.use_browserifyinc = false
+  # config.browserify_rails.use_browserifyinc = false
 
   # Code is not reloaded between requests.
   config.cache_classes = true
