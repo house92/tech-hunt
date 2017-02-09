@@ -1,7 +1,7 @@
 require 'will_paginate'
 
 class JobsController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @search = job_params
