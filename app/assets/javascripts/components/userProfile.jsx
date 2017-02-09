@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Header from './header.jsx';
+import AccountInfo from './accountInfo.jsx';
 import PsychologicalChart from './psychologicalChart.jsx';
 
 export default class UserProfile extends Component {
@@ -41,9 +42,7 @@ export default class UserProfile extends Component {
           <Col xs={12} md={10} mdOffset={1} lg={8} lgOffset={2}>
             <Row>
               <Col xs={12}>
-                <h1 className="name">{this.props.account.first_name ? `${this.props.account.first_name} ${this.props.account.last_name}` : this.props.account.company_name}</h1>
-                <div className="location">{this.props.account.location}</div>
-                <div className="bio">{this.props.account.bio}</div>
+                <AccountInfo account={this.props.account} />
               </Col>
             </Row>
             {personalityCharts}

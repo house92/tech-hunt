@@ -1,5 +1,5 @@
 class HuntersController < ApplicationController
-  before_filter :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def show
     @account = Hunter.find_by(id: params[:id])
@@ -10,6 +10,17 @@ class HuntersController < ApplicationController
 
   def create
     Hunter.create(hunter_params)
+  end
+
+  def update
+    account = Hunter.find_by(user_id: hunter_params[:user_id])
+    account.update(hunter_params)
+    respond_to do |format|
+      format.html {}
+      format.json {
+        render json: account
+      }
+    end
   end
 
   private

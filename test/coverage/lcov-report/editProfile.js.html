@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for applicationForm.js</title>
+    <title>Code coverage report for editProfile.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="index.html">All files</a> applicationForm.js
+      <a href="index.html">All files</a> editProfile.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>15/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>14/14</span>
       </div>
     </div>
   </div>
@@ -76,29 +76,43 @@
 31
 32
 33
-34</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+34
+35
+36
+37
+38
+39
+40
+41</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -110,35 +124,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import { Row, Col, FormControl, HelpBlock, Button } from 'react-bootstrap';
-import Header from './header.jsx';
-import Functions from '../../../../lib/functions.js';
+import { Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import _ from 'lodash';
 &nbsp;
-const characterLimit = 3000;
+export default class EditProfile extends Component {
+  constructor(props) <span class="branch-1 cbranch-no" title="branch not covered" >{</span>
+    super(props);
+    this.state = this.props.userInfo;
+    this.handleValueChange = this.handleValueChange.bind(this);
+  }
 &nbsp;
-export default class ApplicationForm extends Component {
+  handleValueChange(e) {
+    var nextState = _.cloneDeep(this.state)
+&nbsp;
+    nextState[e.target.name] = e.target.value
+&nbsp;
+    this.setState(nextState);
+  }
+&nbsp;
   render() {
+    const inputs = Object.keys(this.state).filter((key) =&gt; { return key != "id" }).map((key) =&gt; {
+      return (
+        &lt;FormGroup controlId={`controlFor${key}`} key={key}&gt;
+          &lt;ControlLabel&gt;{`${key.split("_").map((word) =&gt; { return word[0].toUpperCase() + word.substr(1, 99) }).join(" ")}:`}&lt;/ControlLabel&gt;
+          &lt;FormControl type="text" name={key} value={this.state[key]} onChange={this.handleValueChange} /&gt;
+        &lt;/FormGroup&gt;
+      );
+    });
+&nbsp;
     return (
-      &lt;Header currentUser={this.props.currentUser} notice={this.props.notice} alert={this.props.alert}&gt;
-        &lt;Row&gt;
-          &lt;Col xs={12} md={8} mdOffset={2} lg={6} lgOffset={3}&gt;
-            &lt;div className="application"&gt;
-              &lt;h1&gt;{`Application for ${this.props.job.title}`}&lt;/h1&gt;
-              &lt;div&gt;{`Write your cover letter out below:`}&lt;/div&gt;
-              &lt;form action={`/jobs/${this.props.job.id}/applications`} method="POST"&gt;
-                &lt;FormControl componentClass="textarea" name="body" maxLength={characterLimit} /&gt;
-                &lt;HelpBlock&gt;{`Character limit: ${characterLimit}`}&lt;/HelpBlock&gt;
-                &lt;FormControl type="hidden" name="authenticity_token" value={Functions.getMetaContent("csrf-token")} /&gt;
-                &lt;Row&gt;
-                  &lt;Col xs={12} sm={4} smOffset={4} md={2} mdOffset={5}&gt;
-                    &lt;Button type="submit" className="btn btn-primary"&gt;{`Apply`}&lt;/Button&gt;
-                  &lt;/Col&gt;
-                &lt;/Row&gt;
-              &lt;/form&gt;
-            &lt;/div&gt;
-          &lt;/Col&gt;
-        &lt;/Row&gt;
-      &lt;/Header&gt;
+      &lt;form&gt;
+        {inputs}
+        &lt;FormGroup controlId="controlForBio"&gt;
+          &lt;ControlLabel&gt;{`Biography:`}&lt;/ControlLabel&gt;
+          &lt;FormControl componentClass="textarea" name="bio" value={this.state.bio} onChange={this.handleValueChange} /&gt;
+        &lt;/FormGroup&gt;
+      &lt;/form&gt;
     );
   }
 }

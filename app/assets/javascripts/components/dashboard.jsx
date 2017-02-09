@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Header from './header.jsx';
+import DashboardProfile from './dashboardProfile.jsx';
 import ApplicationsContainer from './applicationsContainer.jsx';
 import PsychologicalChart from './psychologicalChart.jsx';
 
@@ -73,6 +74,11 @@ export default class Dashboard extends Component {
           </Col>
           <Col md={9}>
             <h1>{`Dashboard`}</h1>
+            <Row>
+              <Col xs={12}>
+                <DashboardProfile currentUser={this.props.currentUser} account={this.props.account} />
+              </Col>
+            </Row>
             <Row>
               <Col md={6}>
                 <ApplicationsContainer currentUser={this.props.currentUser} applications={this.state.applications}  />
