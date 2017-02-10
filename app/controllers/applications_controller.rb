@@ -17,6 +17,7 @@ class ApplicationsController < ApplicationController
     application = Application.new(application_params)
     application.update(hunter_id: hunter.id)
     application.save
+    UserMailer.application_notification(current_user, application.job.employer, application).deliver_now
     redirect_to(user_dashboard_path(current_user))
   end
 

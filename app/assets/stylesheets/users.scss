@@ -37,11 +37,15 @@
   }
 }
 
-.applications {
+.applications, .dashboard-profile {
   margin: 2rem;
   padding: 0 1rem;
   border: 3px solid map-get($colours, charcoal);
   border-radius: 5px;
+  &.applications {
+    overflow-y: scroll;
+    height: 30rem;
+  }
   .application{
     margin: 1rem;
     padding: 0 2rem;

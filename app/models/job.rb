@@ -5,10 +5,10 @@ class Job < ApplicationRecord
   include Elasticsearch::Model::Callbacks
   belongs_to :employer
   has_many :applications
-  has_many :job_benefits
-  has_many :benefits, through: :job_benefits
-  has_many :job_skills
-  has_many :jobs, through: :job_skills
+  # has_many :job_benefits
+  # has_many :benefits, through: :job_benefits
+  # has_many :job_skills
+  # has_many :jobs, through: :job_skills
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do

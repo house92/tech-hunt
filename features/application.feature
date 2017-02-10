@@ -13,6 +13,7 @@ Feature: A hunter can apply to a job
       When I fill out the form to submit an application
         And I click on "Apply"
       Then the user with e-mail "lightning@asgard.gov" should have an application
+        And "charles.xavier@xschool.com" should receive an email
 
     @poltergeist
     Scenario: Attempting to access the new application page as an employer

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @account = current_user.get_account
-    @applications = @account.applications
+    @applications = @account.applications.order(created_at: :desc).limit(10)
     @big_five = @account.respond_to?(:big_five) ? @account.big_five : nil
     @myers_briggs = @account.respond_to?(:myers_briggs) ? @account.myers_briggs : nil
   end

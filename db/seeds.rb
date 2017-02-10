@@ -12,7 +12,7 @@ module SeedData
   def self.extended(object)
     object.instance_exec do
       user1 = User.create(email: "lightning@asgard.gov", password: "mjollnir", account_type: "hunter") unless User.find_by(email: "lightning@asgard.gov")
-      Hunter.create(first_name: "Thor", last_name: "Odinson", user_id: user1.id) unless Hunter.find_by(first_name: "Thor")
+      Hunter.create(first_name: "Thor", last_name: "Odinson", location: "Asgard", bio: "Wielder of Mjollnir.", user_id: user1.id) unless Hunter.find_by(first_name: "Thor")
       user2 = User.create(email: "charles.xavier@xschool.com", password: "cerebro", account_type: "employer") unless User.find_by(email: "charles.xavier@xschool.com")
       employer1 = Employer.create(company_name: "Professor Xavier's School For Gifted Youngsters", user_id: user2.id) unless Employer.find_by(company_name: "Professor Xavier's School For Gifted Youngsters")
 
