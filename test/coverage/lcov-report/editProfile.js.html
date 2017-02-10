@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">70.83% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/15</span>
+        <span class='fraction'>17/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">72.73% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>1/2</span>
+        <span class='fraction'>8/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">69.57% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>14/14</span>
+        <span class='fraction'>16/23</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -83,7 +83,25 @@
 38
 39
 40
-41</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -92,6 +110,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,9 +137,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -123,15 +156,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import { Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import _ from 'lodash';
+import Functions from '../../../../lib/functions.js';
 &nbsp;
 export default class EditProfile extends Component {
   constructor(props) <span class="branch-1 cbranch-no" title="branch not covered" >{</span>
     super(props);
     this.state = this.props.userInfo;
     this.handleValueChange = this.handleValueChange.bind(this);
+    this.updateAccount = this.updateAccount.bind(this);
+  }
+&nbsp;
+  updateAccount() <span class="cstat-no" title="statement not covered" >{</span>
+    c</span>onst update = <span class="cstat-no" title="statement not covered" >{};
+<span class="cstat-no" title="statement not covered" >    update[this.props.currentUser.account_type] = this.state;</span>
+<span class="cstat-no" title="statement not covered" >    update.authenticity_token = Functions.getMetaContent("csrf-token");</span>
+<span class="cstat-no" title="statement not covered" >    $.ajax({</span>
+      url: `/${this.props.currentUser.account_type}s/${this.props.userInfo.id}.json`,
+      method: 'PATCH',
+      data: update
+    }).done(<span class="fstat-no" title="function not covered" >(</span>data) =&gt; {
+<span class="cstat-no" title="statement not covered" >      console.log("updating", data);</span>
+<span class="cstat-no" title="statement not covered" >      this.props.updateParentInfo(data);</span>
+    });
   }
 &nbsp;
   handleValueChange(e) {
@@ -143,11 +193,11 @@ export default class EditProfile extends Component {
   }
 &nbsp;
   render() {
-    const inputs = Object.keys(this.state).filter((key) =&gt; { return key != "id" }).map((key) =&gt; {
+    const inputs = Object.keys(this.state).filter((key) =&gt; { return key != "id" &amp;&amp; key != "created_at" &amp;&amp; key != "user_id" &amp;&amp; key != "updated_at" &amp;&amp; key != "bio" }).map((key) =&gt; {
       return (
         &lt;FormGroup controlId={`controlFor${key}`} key={key}&gt;
           &lt;ControlLabel&gt;{`${key.split("_").map((word) =&gt; { return word[0].toUpperCase() + word.substr(1, 99) }).join(" ")}:`}&lt;/ControlLabel&gt;
-          &lt;FormControl type="text" name={key} value={this.state[key]} onChange={this.handleValueChange} /&gt;
+          &lt;</span>FormControl type="text" name={key} value={this.state[key] ? this.state[key] : <span class="branch-1 cbranch-no" title="branch not covered" >""} onChange={this.handleValueChange} /&gt;
         &lt;/FormGroup&gt;
       );
     });
@@ -157,8 +207,9 @@ export default class EditProfile extends Component {
         {inputs}
         &lt;FormGroup controlId="controlForBio"&gt;
           &lt;ControlLabel&gt;{`Biography:`}&lt;/ControlLabel&gt;
-          &lt;FormControl componentClass="textarea" name="bio" value={this.state.bio} onChange={this.handleValueChange} /&gt;
+          &lt;</span>FormControl componentClass="textarea" name="bio" value={this.state.bio ? this.state.bio : <span class="branch-1 cbranch-no" title="branch not covered" >""} onChange={this.handleValueChange} /&gt;
         &lt;/FormGroup&gt;
+        &lt;Button type="button" onClick={this.updateAccount}&gt;{`Update`}&lt;/Button&gt;
       &lt;/form&gt;
     );
   }
@@ -169,7 +220,7 @@ export default class EditProfile extends Component {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Feb 09 2017 21:52:34 GMT+0000 (GMT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Feb 10 2017 11:53:12 GMT+0000 (GMT)
 </div>
 </div>
 <script src="prettify.js"></script>
