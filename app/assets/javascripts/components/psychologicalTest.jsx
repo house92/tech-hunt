@@ -3,6 +3,7 @@ import { Row, Col, ControlLabel, FormControl, FormGroup, Button, Radio } from 'r
 import Header from './header.jsx';
 import { bigFiveQuestions } from '../../../../lib/bigFiveQuestions.js';
 import { myersBriggsQuestions } from '../../../../lib/myersBriggsQuestions.js';
+import Functions from '../../../../lib/functions.js';
 
 const tests = [{name: "Big Five", value: "bigFive"}, {name: "Myers-Briggs", value: "myersBriggs"}];
 const scale = ["Strongly Disagree", "Somewhat Disagree", "Neutral", "Somewhat Agree", "Strongly Agree"];
@@ -76,6 +77,7 @@ export default class PsychologicalTest extends Component {
                 {scaleDisplay}
               </Row>
               {inputs}
+              <input type="hidden" name="authenticity_token" value={Functions.getMetaContent} />
               <Button type="submit">{`Submit`}</Button>
             </form>
           </div>
@@ -94,6 +96,7 @@ export default class PsychologicalTest extends Component {
                 {scaleDisplay}
               </Row>
               {inputs}
+              <input type="hidden" name="authenticity_token" value={Functions.getMetaContent} />
               <Button type="submit">{`Submit`}</Button>
             </form>
           </div>

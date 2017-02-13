@@ -13,7 +13,7 @@ class Job < ApplicationRecord
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
       indexes :title, type: 'string', analyzer: 'english'
-      indexes :description, type: 'text', analyzer: 'english'
+      indexes :description, type: 'string', analyzer: 'english'
       indexes :salary, type: 'integer'
       indexes :location, type: 'string'
       indexes :lat, type: 'float'
